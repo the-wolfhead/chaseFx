@@ -1,0 +1,346 @@
+body {
+  margin: auto;
+  background-color: black !important;
+  overflow-x: hidden !important;
+}
+.navbar {
+  width: 400px;
+  margin: auto;
+  margin-top: 10px !important;
+  overflow: hidden;
+}
+
+.navbar .container-fluid .hmb-bg {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(297deg, rgba(35,28,98,1) 0%, rgba(56,110,180,1) 78%, rgba(0,0,0,1) 100%);
+  mix-blend-mode: normal;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+  border-radius: 7px;
+  margin-left: 10px !important;
+  position: relative;
+}
+.navbar .navbar-brand .hamburger {
+  width: 22px;
+  height: 16px;
+  position: absolute;
+  left: 4px;
+  top: 8px;
+}
+.navbar .profile {
+width: 100%;
+height: auto;
+max-width: 50px;
+margin-left: auto;
+margin-right: auto;
+display: block;
+}
+
+.navbar .notif {
+  margin-right: 1em;
+  width: 24px;
+}
+
+.jumbotron {
+  width: 400px;
+  height: 295px;
+  background: linear-gradient(297deg, rgba(35,28,98,1) 0%, rgba(56,110,180,1) 78%, rgba(0,0,0,1) 100%);
+  mix-blend-mode: normal;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  margin: auto;
+  border-radius: 50px;
+  position: relative;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.jumbotron .container-fluid .desc {
+  padding-top: 30px;
+  font-weight: 400;
+}
+.jumbotron .container-fluid .title {
+  font-size: 42px;
+  font-weight: 600;
+}
+.jumbotron .container-fluid .write {
+  color: #ffe600;
+  font-size: 12px;
+  font-weight: 400;
+}
+.fitur {
+  margin: 30px;
+}
+.jumbotron .fitur .fitur-1 {
+  width: 80px;
+  height: 85px;
+ background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.04) 45.05%, rgba(255, 255, 255, 0.46) 100%);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+backdrop-filter: blur(20px);
+  
+  border-radius: 15px;
+  margin-left: 25px;
+  margin-top: 10px;
+}
+.jumbotron .fitur .fitur-1 .deposit {
+  margin-top: 15px;
+}
+.jumbotron .fitur .fitur-1 .desc {
+  font-size: 13px;
+  margin-top: 4px;
+  font-weight: 400;
+}
+.wkwk {
+  width: 400px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+.wrapper {
+  position: relative;
+  left: -12px;
+}
+.content {
+  margin-top: 30px;
+}
+.content .container-fluid .fill-info {
+  width: 200px;
+  height: 65px;
+  background: linear-gradient(180.07deg, rgba(255, 255, 255, 0.165) 0.06%, rgba(255, 255, 255, 0.085) 54.47%, rgba(232, 238, 255, 0.265) 129.51%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 16px;
+  margin-left: 2px;
+  border-radius: 20px;
+
+  position: relative;
+}
+.content .container-fluid .fill .activity {
+  width: 43px;
+  margin-top: 8px;
+  margin-left: 10px;
+}
+
+.content .container-fluid .fill .title {
+  font-size: 12px;
+  margin: 5px;
+  margin-top: 10px;
+  font-weight: 600;
+  width: 280px !important;
+  position: relative;
+  top: 5px;
+}
+
+.content .container-fluid .fill .desc {
+  color: #386eb4;
+  position: absolute;
+  font-size: 12px;
+  font-weight: 500;
+  left: 5em;
+  top: 2.6em;
+  width: 72px;
+}
+.content-right {
+  position: absolute;
+  left: 13.5em;
+  top: -0.1em;
+}
+.content-right .container-fluid .fill-info {
+  width: 180px;
+  height: 148px;
+  background: linear-gradient(142.23deg, rgba(255, 255, 255, 0.04) -9.08%, rgba(232, 238, 255, 0.265) 101.79%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  margin-left: 2px;
+
+  position: relative;
+}
+
+.content-right .container-fluid .fill-info .fill .earning {
+  margin: 15px 0px 0px 15px;
+  width: 55px;
+}
+.content-right .container-fluid .fill-info .fill .title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 15px;
+  margin-left: 5px;
+  width: 197px;
+}
+.content-right .container-fluid .fill-info .fill .subTitle {
+  font-size: 52px;
+  position: absolute;
+  left: 8px;
+  top: 1.4em;
+}
+.content-right .container-fluid .fill-info .fill .desc {
+  color: #386eb4;
+  position: absolute;
+  font-size: 12px;
+  font-weight: 500;
+  left: 6.5em;
+  top: 3em;
+}
+.polygon {
+  width: 6px;
+  height: 4px;
+  position: absolute;
+  top: 3.8rem;
+  right: 3.2em;
+}
+.content-right .container-fluid .fill-info .total {
+  position: absolute;
+  top: 6.3em;
+  font-size: 9px;
+  color: #386eb4;
+  left: 15em;
+}
+.content-right .container-fluid .fill-info .totalTwo {
+  color: #ff0505;
+  position: absolute;
+  top: 6.5em;
+  font-size: 9px;
+  left: 15em;
+  margin-top: 15px;
+}
+
+.content-right .container-fluid .fill-info .polygonTwo {
+  width: 6px;
+  height: 4px;
+  position: absolute;
+  top: 4.9rem;
+    right: 3.2em;
+}
+.content-right .container-fluid .fill-info .totalThree {
+  position: absolute;
+  top: 10.2em;
+  font-size: 9px;
+  color: #ff0505;
+  left: 15em;
+}
+.content-right .container-fluid .fill-info .polygonThree {
+  width: 6px;
+  height: 4px;
+  position: absolute;
+  top: 6em;
+    right: 3.2em;
+}
+.content-right .container-fluid .fill-info .totalFore {
+ color: #386eb4;
+  position: absolute;
+  top: 10.5em;
+  font-size: 9px;
+  left: 15em;
+  margin-top: 15px;
+}
+
+.content-right .container-fluid .fill-info .polygonFore {
+  width: 6px;
+  height: 4px;
+  position: absolute;
+  top: 7.1rem;
+  right: 3.2em;
+}
+.content-right .container-fluid .fill-info .totalFive {
+   color: #386eb4;
+  position: absolute;
+  top: 12.5em;
+  font-size: 9px;
+  left: 15em;
+  margin-top: 15px;
+}
+
+.content-right .container-fluid .fill-info .polygonFive {
+  width: 6px;
+  height: 4px;
+  position: absolute;
+  top: 8.2rem;
+  right: 3.2em;
+}
+
+.content-right .container-fluid .totalWithdrawal {
+  width: 180px;
+  height: 65px;
+  background: linear-gradient(180.07deg, rgba(255, 255, 255, 0.165) 0.06%, rgba(255, 255, 255, 0.085) 54.47%, rgba(232, 238, 255, 0.265) 129.51%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin-top: 16px;
+  border-radius: 20px;
+  position: relative;
+}
+.content-right .container-fluid .totalWithdrawal .activity {
+  margin-top: 8px;
+  margin-left: 10px;
+  width: 43px;
+}
+.content-right .container-fluid .totalWithdrawal .title {
+  font-size: 10px;
+  margin: 2px;
+  margin-top: 15px;
+  font-weight: 600;
+  width: 200px !important;
+}
+.content-right .container-fluid .totalWithdrawal .desc {
+  color: #386eb4;
+  position: absolute;
+  font-size: 12px;
+  font-weight: 500;
+  left: 4.8em;
+  top: 2.4em;
+  width: 72px;
+}
+.detail {
+  margin-top: 20px !important;
+  margin-bottom: 20px;
+  width: 400px;
+  margin: auto;
+  overflow: hidden;
+}
+.detail .container-fluid .fill .desc {
+  font-size: 9px;
+  text-align: center !important;
+  display: inline-block;
+  margin: auto;
+  color: white;
+  width: 65px;
+}
+.detail .container-fluid .wrap {
+  background-color: white;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+.blue {
+  width: 46px;
+  height: 9px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  color: #2400ff;
+}
+.red {
+  font-weight: 450;
+  font-size: 9px;
+  line-height: 11px;
+  color: #ff0000;
+}
+.green {
+  font-weight: 450;
+  font-size: 9px;
+  line-height: 11px;
+  color: #04db40;
+}
+.time {
+  width: 28px;
+  margin: 12px;
+  position: relative;
+  top: 4px;
+  margin-left: 15px;
+}
+/* @media (min-width: 768px) {
+  .navbar,
+  .jumbotron,
+  .wrapper,
+  .content-right,
+  .detail {
+    display: none;
+  }
+} */

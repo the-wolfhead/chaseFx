@@ -1,0 +1,104 @@
+body {
+  margin: auto;
+  height: 926px;
+  background-color: black !important;
+  overflow-x: hidden !important;
+  background: linear-gradient(297deg, rgba(35,28,98,1) 0%, rgba(56,110,180,1) 78%, rgba(0,0,0,1) 100%);
+}
+a {
+  text-decoration: none !important;
+}
+.navbar {
+  width: 330px;
+  margin: auto;
+  margin-top: 30px !important;
+  overflow: hidden;
+}
+.profileUser {
+  width: 330px;
+  margin: auto;
+  margin-top: 20px !important;
+}
+.profile {
+  width: 41px;
+  margin-left: px;
+}
+.profileUser .container-fluid .content {
+  position: relative;
+}
+.profileUser .container-fluid .content .title {
+  font-size: 16px;
+  margin-left: 15px;
+  font-weight: 700;
+  width: 159px;
+}
+.profileUser .container-fluid .content .desc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6) !important;
+  position: absolute;
+  left: 4.6em;
+  top: 1.8em;
+  width: 159px;
+}
+.user-info {
+  width: 360px;
+  margin: auto;
+}
+.user-info .container-fluid .content {
+  width: 330px;
+  height: 140px;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  margin: auto;
+  margin-top: 20px !important;
+  border: 1px solid rgb(116, 1, 1);
+}
+.user-info .container-fluid .content .fill-text {
+  position: relative;
+  top: 10px;
+}
+.user-info .container-fluid .content .fill-text .title {
+  font-size: 12px;
+  font-weight: 700;
+  width: 120px;
+  height: 12px;
+  margin-left: 20px;
+  margin-top: -5px;
+  padding-top: 10px;
+}
+.user-info .container-fluid .content .fill-text .desc {
+  font-size: 10px;
+  width: 150px;
+  height: 12px;
+  font-weight: 600;
+  margin-top: -5px;
+  padding-top: 10px;
+}
+.green {
+  color: #42ff00;
+}
+
+.nav-link {
+  width: 360px;
+  margin: auto;
+  margin-top: 20px !important;
+}
+.nav-link .container-fluid .content {
+  width: 335px;
+  height: 40px;
+  background: linear-gradient(142.23deg, rgba(255, 255, 255, 0.04) -9.08%, rgba(232, 238, 255, 0.265) 101.79%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  border-radius: 11px;
+  border: 1px solid rgb(116, 1, 1);
+  margin-top: 10px;
+}
+.nav-link .container-fluid .content .title {
+  width: 200px;
+  height: 26px;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 9px;
+  margin-left: 10px;
+}
