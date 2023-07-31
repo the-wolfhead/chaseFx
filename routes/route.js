@@ -570,6 +570,7 @@ router.get('/logout',(req,res)=>{
    if(req.query.id==rand)
    {
       console.log("email is verified");
+      
       res.redirect('dashboard');
    }
    else
