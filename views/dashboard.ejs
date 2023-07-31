@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Solabiz-innovation Markets</title>
+    <title>Xprex Markets</title>
     <!-- csss -->
     <link rel="stylesheet" href="assets/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
@@ -22,7 +22,7 @@
   <div class="jumbotron">
     <div class="container-fluid">
         <p class="desc text-light">Your Balance</p>
-        <h1 class="title text-light">ANG<%=obj.balance %></h1>
+        <h1 class="title text-light">USD<%=obj.balance %></h1>
                                                 <p style="color:red;" class="write">Non Spendable</p>
                                         </div>
     <div class="fitur d-flex">
@@ -54,28 +54,28 @@
         <div class="fill d-flex">
            <a href="#"><img src="assets/image/Activity.png" alt="img" class="activity"></a>
            <h1 class="title text-light">Active Deposit</h1>
-           <p class="desc">ANG<%= obj.deposit %></p>
+           <p class="desc">USD<%= obj.deposit %></p>
         </div>
     </div>
         <div class="fill-info">
         <div class="fill d-flex">
            <a href="#"><img src="assets/image/last.png" alt="img" class="activity mt-3"></a>
            <h1 class="title text-light">Last Deposit</h1>
-           <p class="desc">ANG0.00</p>
+           <p class="desc">USD</p>
         </div>
     </div>
         <div class="fill-info">
         <div class="fill d-flex">
            <a href="#"><img src="assets/image/total.png" alt="img" class="activity mt-3"></a>
            <h1 class="title text-light">Total Deposit</h1>
-           <p class="desc">ANG0.00</p>
+           <p class="desc">USD0.00</p>
         </div>
     </div>
         <div class="fill-info">
         <div class="fill d-flex">
            <a href="#"><img src="assets/image/time.png" alt="img" class="time"></a>
            <h1 class="title text-light">Last Withdrawal</h1>
-           <p class="desc">ANG0.00</p>
+           <p class="desc">USD0.00</p>
         </div>
     </div>
     </div>
@@ -87,7 +87,7 @@
             <div class="fill d-flex">
                 <img src="assets/image/earning.svg" alt="img" class="earning">
                 <h1 class="title text-light">Earnings</h1>
-                <p class="desc">ANG0.00</p>
+                <p class="desc">USD<%= obj.profit %></p>
                <h1 class="subTitle text-light">0/0</h1>
             </div>
         </div>
@@ -95,14 +95,14 @@
           <div class="fill d-flex">
              <a href="#"><img src="assets/image/last.png" alt="img" class="activity mt-3"></a>
              <h1 class="title text-light">Total Withdrawal</h1>
-             <p class="desc">ANG0.00</p>
+             <p class="desc">USD0.00</p>
           </div>
       </div>
         <div class="totalWithdrawal">
           <div class="fill d-flex">
              <a href="#"><img src="assets/image/time.png" alt="img" class="time"></a>
              <h1 class="title text-light">Pending Withdrawal</h1>
-             <p class="desc">ANG0.00</p>
+             <p class="desc">USD0.00</p>
           </div>
       </div>
     </div>
@@ -198,7 +198,7 @@
 
     <script>
         // BASE URL and API Inclusion
-        const BASE_URL = 'https://slb-innovationmarkets.live/';
+        const BASE_URL = '/';
         const API = `${BASE_URL}api/users.php`;
         const USERID = 212;
 

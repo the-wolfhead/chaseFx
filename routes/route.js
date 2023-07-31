@@ -31,23 +31,53 @@ router.get('/faq',(req,res)=>{
 router.get('/notif',(req,res)=>{
     res.render('notif');
 })
-router.get('/navbarPage',(req,res)=>{
-    res.render('navbarPage');
-})
-router.get('/payment',(req,res)=>{
-    var sql ="SELECT * FROM deposit WHERE deposit_id="+dep_id;
-    connection.query(sql, function (err, result){
+router.get('/dashboard',(req,res)=>{
+    var sql = "SELECT * FROM users WHERE id="+user_id;
+    connection.query(sql, function (err, result) {
         if (err) {
             throw err;
         } else {
-            Object.keys(result).forEach(function(key) {
-                var row = result[key];
-                coli=row;
-                res.render('payment', {obj, coli});
-            console.log(row);
-              });
+            obj = result;
+            res.render('dashboard', {obj});
+            console.log(obj.first);
         }
-    });
+
+    }); 
+})
+router.get('/navbarPage',(req,res)=>{
+    if (typeof user_id !== 'undefined'){
+        var sql = "SELECT * FROM users WHERE id="+user_id;
+        connection.query(sql, function (err, result) {
+            if (err) {
+                throw err;
+            } else {
+                obj = result;
+                res.render('navbarPage', {obj});
+                console.log(obj.email);
+            }    
+        });
+    }else{
+        res.redirect('../signin');
+    }
+})
+router.get('/payment',(req,res)=>{
+    if (typeof user_id !== 'undefined'){
+        var sql ="SELECT * FROM deposit WHERE deposit_id="+dep_id;
+        connection.query(sql, function (err, result){
+            if (err) {
+                throw err;
+            } else {
+                Object.keys(result).forEach(function(key) {
+                    var row = result[key];
+                    coli=row;
+                    res.render('payment', {obj, coli});
+                console.log(row);
+                });
+            }
+        });
+    }else{
+        res.redirect('../signin');
+    }   
 })
 router.get('/mplans',(req,res)=>{
          res.render('mplans',);    
@@ -111,7 +141,6 @@ router.get('/transactions',(req,res, next)=>{
     }else{
         res.redirect('../signin');
     }
-    
 })
 
 router.get('/withdrawal',(req,res)=>{
@@ -325,25 +354,12 @@ router.post('/profile',(req,res)=>{
         })
     }
 })
-router.get('/dashboard',(req,res)=>{
-    var sql = "SELECT * FROM users WHERE id="+user_id;
-    connection.query(sql, function (err, result) {
-        if (err) {
-            throw err;
-        } else {
-            obj = result;
-            res.render('dashboard', {obj});
-            console.log(obj.first);
-        }
 
-        
-    }); 
-})
 //Register handle
 router.post('/signin',(req,res)=>{
     var email = req.body.email;
 var password = req.body.password;
-if ((email == 'admin@SwiftXchange.com')&&(password =='admin01')){
+if ((email == 'admin@xprexmarket.com')&&(password =='admin01')){
     res.redirect('/admin');
 }
 else{
@@ -501,8 +517,8 @@ router.get('/logout',(req,res)=>{
        rejectUnauthorized: false
     },
     auth: {
-        user: 'swift.trading2015@outlook.com',
-        pass: 'milano12345'
+        user: 'xprexmarket@outlook.com',
+        pass: 'QwertyAsdf01'
     }
   });
  
@@ -523,7 +539,7 @@ router.get('/logout',(req,res)=>{
                 host=req.get('host');
                 link="http://"+req.get('host')+"/verify?id="+rand;
                 mailOptions={
-                    from: "SwiftXchange <swift.trading2015@outlook.com>",
+                    from: "Xprex-Market <xprexmarket@outlook.com>",
                    to : email,
                    subject : "Please confirm your Email account",
                    html : "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"	
@@ -640,7 +656,7 @@ var upload = multer({
                 link="http://"+req.get('host')+"/verifier?id="+dep_id+"&user="+user_id;
                 linka="https://iyayi.s3.amazonaws.com"+"/"+image;
                 mailOptions={
-                    from: "SwiftXchange <swift.trading2015@outlook.com>",
+                    from: "Xprex-Market <xprexmarket@outlook.com>",
                    to : 'Erhahonvictory@gmail.com',
                    subject : "Please confirm Payment",
                    html : "Hello,<br> Please Click on the link to verify payment.<br><img src= "+linka+"><a href="+link+">Click here to verify</a>"	

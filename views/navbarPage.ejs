@@ -4,13 +4,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Solabiz-innovation Markets</title>
+    <title>Xprex Markets</title>
     <!-- csss -->
     <link rel="stylesheet" href="assets/navbarPage.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
   </head>
   <body>
-
+    <% obj.forEach(function(obj) { %>
     <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid">
           <div class="hmb-bg">
@@ -23,8 +23,8 @@
         <div class="container-fluid">
             <div class="content d-flex">
                 <a href="profile" class="d-flex"><img src="assets/image/avatar.svg" alt="avatar" class="profile" /></a>
-                <p class=" text-light" style="padding-left:13px;" >Daniel Otab</p>
-                <p class="desc text-light">danieldamianotabor@gmail.com</p>
+                <p class=" text-light" style="padding-left:13px;" ><%= obj.first %></p>
+                <p class="desc text-light"><%= obj.email %></p>
             </div>
         </div>
       </div>
@@ -34,7 +34,7 @@
             <div class="content">
                 <div class="fill-text d-flex">
                     <h1 class="title text-light">Username:</h1>
-                    <p class="desc text-light">danieldamianotabor</p>
+                    <p class="desc text-light"></p>
                 </div>
                 <div class="fill-text d-flex">
                     <h1 class="title text-light">Registration Date:</h1>
@@ -91,7 +91,7 @@
         </div>
         </div>
       </div>
-
+      <% }); %>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
