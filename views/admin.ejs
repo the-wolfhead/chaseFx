@@ -105,6 +105,19 @@
         								
         							</div>
 								</div>
+								<form action="/admin" method="post">
+									
+									<div class="form-row">
+										<div class="form-group col-md-6">
+																			  <label for="first">First Name</label>
+										  <input type="text" class="form-control mr-2" name="first" value="<%= typeof whatsapp != 'undefined' ? whatsapp : '' %>" id="whatsapp" placeholder="Enter First Name">
+										</div>
+										<div class="form-group col-md-6">
+																			  <label for="last">Last name</label>
+										  <input type="text" class="form-control" name="last" value="<%= typeof last != 'undefined' ? last : '' %>" id="last" placeholder="Enter last name">
+										</div>
+									</div>
+								</form>
 								
 							</div>
 							

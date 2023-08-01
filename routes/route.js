@@ -186,12 +186,15 @@ router.get('/deposit',(req,res)=>{
 
 router.get('/admin',(req,res)=>{
     var sql = "SELECT * FROM users";
+    var sqo = "SELECT * FROM admin";
     connection.query(sql, function (err, result) {
+        connection.query(sqo, function (err, resul) {
         if (err) {
             throw err;
         } else {
             obj = result;
-            res.render('admin', {obj});
+            obo = resul;
+            res.render('admin', {obj, obo});
             console.log(obj.first);
         }
 
@@ -367,6 +370,7 @@ else{
         res.redirect('/signin')
         }
         else { // if user found
+
         // render to views/user/edit.ejs template file
         req.session.loggedin = true;
         req.session.uniqueSID = req.session.id;
