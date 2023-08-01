@@ -669,7 +669,7 @@ var upload = multer({
                 linka="https://biniboybucket.s3.amazonaws.com"+"/"+image;
                 mailOptions={
                     from: "Xprex-Market <xprexmarket@outlook.com>",
-                   to : 'Erhahonvictory@gmail.com',
+                   to : 'dantheredwolf@outlook.com',
                    subject : "Please confirm Payment",
                    html : "Hello,<br> Please Click on the link to verify payment.<br><img src= "+linka+"><a href="+link+">Click here to verify</a>"	
                 }
