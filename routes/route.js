@@ -22,6 +22,15 @@ router.get('/signin',(req,res)=>{
 router.get('/signup',(req,res)=>{
     res.render('signup')
     })
+    router.get('/terms',(req,res)=>{
+        res.render('terms')
+        })
+router.get('/aml_policy',(req,res)=>{
+    res.render('aml_policy')
+    })
+router.get('/privacy_policy',(req,res)=>{
+    res.render('privacy_policy')
+    })
 router.get('/about',(req,res)=>{
     res.render('about');
 })
