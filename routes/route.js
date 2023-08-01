@@ -19,6 +19,9 @@ router.get('/', (req,res)=>{
 router.get('/signin',(req,res)=>{
     res.render('signin');
 })
+router.get('/signup',(req,res)=>{
+    res.render('signup')
+    })
 router.get('/about',(req,res)=>{
     res.render('about');
 })
@@ -79,9 +82,6 @@ router.get('/payment',(req,res)=>{
         res.redirect('../signin');
     }   
 })
-router.get('/mplans',(req,res)=>{
-         res.render('mplans',);    
-        });
 
 router.get('/verify',(req,res)=>{
     if (typeof user_id !== 'undefined'){
@@ -93,8 +93,6 @@ router.get('/verify',(req,res)=>{
                 obj = resu;
                     res.render('verify');
                 
-                
-                
             }
         });
     }else{
@@ -102,19 +100,20 @@ router.get('/verify',(req,res)=>{
     }
 })
 router.get('/profile',(req,res)=>{
-    var sql = "SELECT * FROM users WHERE id="+user_id;
-    connection.query(sql, function (err, result) {
-        if (err) {
-            throw err;
-        } else {
-            obj = result;
-            res.render('profile', {obj});
-            console.log(obj.first);
-        }    
-    });
-})
-router.get('/referuser',(req,res)=>{
-    res.render('referuser');
+    if (typeof user_id !== 'undefined'){
+        var sql = "SELECT * FROM users WHERE id="+user_id;
+        connection.query(sql, function (err, result) {
+            if (err) {
+                throw err;
+            } else {
+                obj = result;
+                res.render('profile', {obj});
+                console.log(obj.first);
+            }    
+        });
+    }else{
+        res.redirect('../signin');
+    }
 })
 router.get('/contactSupport',(req,res)=>{
     res.render('contactSupport');
@@ -165,9 +164,7 @@ router.get('/withdrawal',(req,res)=>{
     }
     
 })
-router.get('/withdraw',(req,res)=>{
-    res.render('withdraw');
-})
+
 router.get('/deposit',(req,res)=>{
     if (typeof user_id !== 'undefined'){
         var sqo ="SELECT * FROM deposit WHERE user_id="+user_id;
@@ -186,9 +183,7 @@ router.get('/deposit',(req,res)=>{
         res.redirect('../signin');
     }
 })
-router.get('/signup',(req,res)=>{
-    res.render('signup')
-    })
+
 router.get('/admin',(req,res)=>{
     var sql = "SELECT * FROM users";
     connection.query(sql, function (err, result) {
@@ -408,6 +403,7 @@ router.post('/signup',(req,res)=>{
             bonus: 10,
             charge_per: 10,
             charge_fix: 2,
+            verification: "pending"
         }
         var email = req.body.email;
         connection.query('INSERT INTO users SET ?', user, function(err, result)  {
@@ -569,8 +565,9 @@ router.get('/logout',(req,res)=>{
    console.log("Domain is matched. Information is from Authentic email");
    if(req.query.id==rand)
    {
+      user_id= req.query.id;
       console.log("email is verified");
-      
+      connection.query('UPDATE users SET verification="verified" WHERE id='+user_id)
       res.redirect('dashboard');
    }
    else
@@ -655,7 +652,7 @@ var upload = multer({
                 user_id=row.user_id;
                 host=req.get('host');
                 link="http://"+req.get('host')+"/verifier?id="+dep_id+"&user="+user_id;
-                linka="https://iyayi.s3.amazonaws.com"+"/"+image;
+                linka="https://biniboybucket.s3.amazonaws.com"+"/"+image;
                 mailOptions={
                     from: "Xprex-Market <xprexmarket@outlook.com>",
                    to : 'Erhahonvictory@gmail.com',
