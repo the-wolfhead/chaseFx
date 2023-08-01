@@ -401,6 +401,9 @@ router.post('/signup',(req,res)=>{
     req.assert('last', 'Last Name is required').notEmpty()           //Validate name
     req.assert('country', 'Country is required').notEmpty()           //Validate name
     req.assert('phone', 'Phone Number is required').notEmpty() 
+    req.assert('home_address', 'A valid home address is required').isEmail()
+    req.assert('city', 'A valid city is required').isEmail()
+    req.assert('postal_code', 'A valid postal_code is required').isEmail()
     req.assert('password', 'Password is required').notEmpty()   //Validate password
     req.assert('email', 'A valid email is required').isEmail()  //Validate email
     var errors = req.validationErrors()
@@ -570,6 +573,7 @@ router.get('/logout',(req,res)=>{
     });
        
  });
+
  
  router.get('/verify',function(req,res){
  console.log(req.protocol+":/"+req.get('host'));
