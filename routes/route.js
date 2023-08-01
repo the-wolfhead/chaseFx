@@ -206,7 +206,7 @@ router.get('/admin',(req,res)=>{
             res.render('admin', {obj, obo});
             console.log(obj.first);
         }
-    }
+    })
 
         
     });
