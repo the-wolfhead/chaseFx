@@ -508,19 +508,7 @@ router.get('/logout',(req,res)=>{
             if (err) throw err;});
     } 
  )
- router.post('/deposit', (req, res)=> {
-      var deposit= req.body.amount;
-      var note ={
-        deposit: req.sanitize('amount').escape().trim(),
-        user_id: user_id
-      }
-      connection.query('INSERT INTO deposit SET ?', note, function(err, result)  {
-        dep_id=result.insertId;
-        console.log(dep_id);
-        res.redirect('/payment');
-    })
 
- } )
  const transporter = nodemailer.createTransport({
     host: "smtp-mail.outlook.com",  
     secureConnection: false, 
@@ -647,18 +635,26 @@ var upload = multer({
     })
     
 });
- router.post('/payment', upload.single('proof'), (req,res)=>{
+ router.post('/deposit', upload.single('proof'), (req,res)=>{
     var image= req.file.originalname;
     console.log(image);
     const now  =  new Date();
     const value = date.format(now,'YYYY/MM/DD');
-    
-    var note = {
+    var deposit= req.body.amount;
+      var note ={
+        deposit: req.sanitize('amount').escape().trim(),
+        user_id: user_id
+      }
+      connection.query('INSERT INTO deposit SET ?', note, function(err, result)  {
+        dep_id=result.insertId;
+        console.log(dep_id);
+    })
+    var noter = {
         deposit_method: req.sanitize('deposit_method').escape().trim(),
         deposit_stat: "Pending Verification",
         dater: value
         }
-        connection.query('UPDATE deposit SET ? WHERE deposit_id='+dep_id+'AND user_id='+user_id, note, function(err, result)  {
+        connection.query('UPDATE deposit SET ? WHERE deposit_id='+dep_id+'AND user_id='+user_id, noter, function(err, result)  {
         var sql ="SELECT * FROM deposit WHERE user_id="+user_id+" AND deposit_id="+dep_id;
         connection.query(sql, function (err, result){
         if (err) {
