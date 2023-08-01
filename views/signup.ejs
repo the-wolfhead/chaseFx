@@ -48,30 +48,30 @@
                                     <p class="uk-text-small uk-margin-remove-top uk-margin-medium-bottom">Already have an account? <a href="signin" style="color:#7eb1f3;"><b>Login here</b></a></p>
                                     
                                     <!-- login form begin -->
-                                    <form class="uk-grid uk-form" id="signupForm" v-on:submit.prevent>
+                                    <form class="uk-grid uk-form" action="signup" method="post" v-on:submit.prevent>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-user-circle fa-sm"></span>
-                                            <input style="background-color:black;" class="uk-input uk-border-rounded" id="fullname" v-model="newUser.fullname" type="text" placeholder="Full Name" required>
+                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="first" v-model="newUser.fullname" type="text" placeholder="Full Name" required>
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
-                                            <input style="background-color:black;" class="uk-input uk-border-rounded" id="username" v-model="newUser.username" type="text" placeholder="Username" required>
+                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="last" v-model="newUser.username" type="text" placeholder="Username" required>
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-house-user fa-sm"></span>
-                                            <input style="background-color:black;" class="uk-input uk-border-rounded" id="home_address" v-model="newUser.home_address" type="text" placeholder="Home Address" required>
+                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="home_address" v-model="newUser.home_address" type="text" placeholder="Home Address" required>
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-city fa-sm"></span>
-                                            <input style="background-color:black;" class="uk-input uk-border-rounded" id="city" v-model="newUser.city" type="text" placeholder="City" required>
+                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="city" v-model="newUser.city" type="text" placeholder="City" required>
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-compass fa-sm"></span>
-                                            <input style="background-color:black;" class="uk-input uk-border-rounded" id="postal_code" v-model="newUser.postal_code" type="text" placeholder="Zipcode/postal-code (Optional)">
+                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="postal_code" v-model="newUser.postal_code" type="text" placeholder="Zipcode/postal-code (Optional)">
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-flag fa-sm"></span>
-                                            <select style="background-color:black;" class="uk-input uk-border-rounded" id="country" v-model="newUser.country" @change="getCurrency" required inputmode="text" required>
+                                            <select style="background-color:black;" class="uk-input uk-border-rounded" name="country" v-model="newUser.country" @change="getCurrency" required inputmode="text" required>
                                                 <option value="" disabled="" selected="">Please Select Country</option>
                                                 <option value='Afghanistan'>Afghanistan (؋)</option>
                                                 <option value='Albania'>Albania (Lek)</option>
@@ -474,10 +474,7 @@
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-lock fa-sm"></span>
                                             <input style="background-color:black;" class="uk-input uk-border-rounded" id="password" v-model="newUser.password" type="password" placeholder="Password" maxlength="16" ng-minlength="8" required pattern=".{8,}" title="8 characters minimum" required>
                                         </div>
-                                        <div class="uk-margin-small uk-width-1-1 uk-inline">
-                                            <span class="uk-form-icon uk-form-icon-flip fas fa-lock fa-sm"></span>
-                                            <input style="background-color:black;" class="uk-input uk-border-rounded" id="confirm_password" v-model="newUser.confirm_password" type="password" placeholder="Confirm Password" maxlength="16" ng-minlength="8" pattern=".{6,}" title="8 characters minimum" required>
-                                        </div>
+                                        
 
                                         <!--<div class="uk-margin-small uk-width-auto uk-text-small">
                                             <label><input class="uk-checkbox uk-border-rounded" type="checkbox"> I Agree To Terms & Conditions</label>
