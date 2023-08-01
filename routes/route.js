@@ -72,25 +72,6 @@ router.get('/navbarPage',(req,res)=>{
         res.redirect('../signin');
     }
 })
-router.get('/payment',(req,res)=>{
-    if (typeof user_id !== 'undefined'){
-        var sql ="SELECT * FROM deposit WHERE deposit_id="+dep_id;
-        connection.query(sql, function (err, result){
-            if (err) {
-                throw err;
-            } else {
-                Object.keys(result).forEach(function(key) {
-                    var row = result[key];
-                    coli=row;
-                    res.render('payment', {obj, coli});
-                console.log(row);
-                });
-            }
-        });
-    }else{
-        res.redirect('../signin');
-    }   
-})
 
 router.get('/verify',(req,res)=>{
     if (typeof user_id !== 'undefined'){
