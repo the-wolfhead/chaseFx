@@ -90,15 +90,15 @@
                     <ul class="dropdown-menu dropdown-user animated fadeIn">
                         <div class="dropdown-user-scroll scrollbar-outer">
                             <li>
-                                <a class="dropdown-item" href="/users/dashboard/changepassword">Change Password</a>
-                                <a class="dropdown-item" href="/users/dashboard/profile">Update Account</a>
+                                <a class="dropdown-item" href="/dashboard/changepassword">Change Password</a>
+                                <a class="dropdown-item" href="/dashboard/profile">Update Account</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/users/logout"
+                                <a class="dropdown-item" href="/logout"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                     Logout
                                     </a>
-                                <form id="logout-form" action="/users/logout" method="POST" style="display: none;">
+                                <form id="logout-form" action="/logout" method="POST" style="display: none;">
                                    
                                 </form>
                             </li>
@@ -139,7 +139,7 @@
             </div>
             <ul class="nav nav-primary">
                 <li class="nav-item active">
-                    <a href="/users/dashboard">
+                    <a href="/dashboard">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>

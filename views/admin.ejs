@@ -98,8 +98,8 @@
                                                     <td><%=obj.charge_fix %></td>
                                                     <td><%=obj.bonus %></td> 
                                                     <td class="txt end">
-                                                        <a href="/users/edituser/<%=obj.id %>" type="button" class="btn btn-light btn-small">edit</a>
-                                                        <a href="/users/deleteuser/<%=obj.id %>" type="button" class="btn btn-light btn-small">delete</a>
+                                                        <a href="/edituser/<%=obj.id %>" type="button" class="btn btn-light btn-small">edit</a>
+                                                        <a href="/deleteuser/<%=obj.id %>" type="button" class="btn btn-light btn-small">delete</a>
                                                     </td>
                                                 </tr> 
                                                 <% }); %>
@@ -114,7 +114,7 @@
 										<div class="form-group col-md-6">
 																			  <label for="first">Whatsapp Number</label>
 										  <input type="text" class="form-control mr-2" name="first" value="<%= typeof whatsapp != 'undefined' ? whatsapp : '' %>" id="whatsapp" placeholder="Enter New Number">
-										  <button type="submit" name="">change</button>
+										  <button type="submit" class="btn btn-primary mt-4">change</button>
 										</div>
 																			</div>
 								</form>
