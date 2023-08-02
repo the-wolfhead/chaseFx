@@ -14,7 +14,15 @@ var path = require('path');
 var s3 = new aws.S3();
 //signin handle
 router.get('/', (req,res)=>{
-    res.render('index');
+    var sqo = "SELECT * FROM admin";
+        connection.query(sqo, function (err, resul) {
+            if (err) {
+                throw err;
+            } else {
+                obo = resul;
+                res.render('index', { obo});
+            }
+        })
 })
 router.get('/signin',(req,res)=>{
     res.render('signin');
@@ -188,12 +196,13 @@ router.get('/admin',(req,res)=>{
                 console.log(obj.first);
             }
         })
-
         
     });
 })
 router.post('/admin', function(req, res) {
-    user = req.body.user;
+    user ={
+        whatsapp: req.body.whatsapp
+    }
     connection.query('UPDATE admin SET ? WHERE id = 1', user, function(err, result){
         res.redirect('/admin')
     })

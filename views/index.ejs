@@ -1815,11 +1815,12 @@ Forex & Stock brokers offer traders investing in shares and currency trading via
             <a href="https://api.whatsapp.com/send?phone=+1(610)8238112&text=I am interested in trading bitcoin how do I start" class="float" target="_blank">
             <i class="fa fa-whatsapp my-float"></i>
         </a>
-        <script src="wa.js" type="text/javascript"></script>                             
+        <script src="wa.js" type="text/javascript"></script>    
+        <% obo.forEach(function(obo) { %>                         
         <script type="text/javascript">
            $(function() {
                $('#WAButton').floatingWhatsApp({
-                   phone: '+1(610)8238112', //WhatsApp Business phone number International format-
+                   phone: '<%=obo.whatsapp %>', //WhatsApp Business phone number International format-
        //Get it with Toky at https://toky.co/en/features/whatsapp.
                    headerTitle: 'Chat with us on WhatsApp!', //Popup Title
                    popupMessage: 'Hello, welcome to Xprexmarket, type your message below', //Popup Message
@@ -1831,6 +1832,7 @@ Forex & Stock brokers offer traders investing in shares and currency trading via
                });
            });
        </script>
+    <% }); %>
         <!--// Floating WhatsApp icon -->
 
     <footer>
