@@ -139,13 +139,22 @@
                                                 <th>Method</th>
                                                 <th>Amount</th>
                                                 <!--<th>File</th>-->
-                                                <th>Narration</th>
-                                                <th>Time</th>
                                                 <th>Date</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <% obj.forEach(function(obj) { %>
+												<tr> 
+        											<th scope="row">        											
+                                                    <td><%=obj.type %></td> 
+                                                    <%=obj.deposit_method %></th>
+        											<td><%=obj.deposit %></td>
+         											<td><%=obj.dater %></td> 
+                                                    <td><%=obj.deposit_stat %></td> 
+
+        										</tr> 
+												<% }); %>	
                                                                                 </tbody>
                                         <tfoot>
                                             <tr>
@@ -153,8 +162,6 @@
                                                 <th>Method</th>
                                                 <th>Amount</th>
                                                 <!--<th>File</th>-->
-                                                <th>Narration</th>
-                                                <th>Time</th>
                                                 <th>Date</th>
                                                 <th>Status</th>
                                             </tr>

@@ -475,14 +475,14 @@ router.get('/logout',(req,res)=>{
       console.log(balance);
       if (balance <= 0) throw err;
       var note = {
-      payment_mode: req.sanitize('payment_mode').escape().trim(),
-      amount: req.sanitize('amount').escape().trim(),
+      deposit_method: req.sanitize('payment_mode').escape().trim(),
+      deposit: req.sanitize('amount').escape().trim(),
       method_id: req.sanitize('method_id').escape().trim(),
-      payment_status: "Withdrawal Pending",
+      deposit_status: "Withdrawal Pending",
       user_id: user_id,
       date: value
       }
-        connection.query('INSERT INTO notif SET ?', note, function(err, result)  {
+        connection.query('INSERT INTO deposit SET ?', note, function(err, result)  {
             res.redirect('/transactions');
         })
         connection.query('UPDATE users SET balance='+balance + ' WHERE id ='+user_id, balance, function(err, result) {
