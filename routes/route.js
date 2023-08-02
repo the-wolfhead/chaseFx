@@ -194,7 +194,9 @@ router.get('/admin',(req,res)=>{
 })
 router.post('/admin', function(req, res) {
     user = req.body.user;
-    connection.query('UPDATE admin SET ? WHERE id = 1', user, function(err, result)
+    connection.query('UPDATE admin SET ? WHERE id = 1', user, function(err, result){
+        res.redirect('/admin')
+    })
 })
 router.get('/deleteuser/(:id)', function(req, res, next){
     connection.query('DELETE FROM users WHERE id = ' + req.params.id, function(err, rows, fields) {
