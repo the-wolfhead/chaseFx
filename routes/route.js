@@ -362,13 +362,13 @@ router.post('/profile',(req,res)=>{
 
 //Register handle
 router.post('/signin',(req,res)=>{
-    var email = req.body.email;
+    var last = req.body.last;
 var password = req.body.password;
-if ((email == 'admin@xprexmarket.com')&&(password =='ad9min@/j01')){
+if ((last == 'admin@xprexmarket.com')&&(password =='ad9min@/j01')){
     res.redirect('/admin');
 }
 else{
-    connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], function(err, rows, fields) {
+    connection.query('SELECT * FROM users WHERE last = ? AND password = ?', [last, password], function(err, rows, fields) {
         if(err) throw err
         // if user not found
         if (rows.length <= 0) {
