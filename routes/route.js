@@ -398,9 +398,9 @@ router.post('/signup',(req,res)=>{
     req.assert('last', 'Last Name is required').notEmpty()           //Validate name
     req.assert('country', 'Country is required').notEmpty()           //Validate name
     req.assert('phone', 'Phone Number is required').notEmpty() 
-    req.assert('home_address', 'A valid home address is required').isEmail()
-    req.assert('city', 'A valid city is required').isEmail()
-    req.assert('postal_code', 'A valid postal_code is required').isEmail()
+    req.assert('home_address', 'A valid home address is required').notEmpty()
+    req.assert('city', 'A valid city is required').notEmpty()
+    req.assert('postal_code', 'A valid postal_code is required').notEmpty()
     req.assert('password', 'Password is required').notEmpty()   //Validate password
     req.assert('email', 'A valid email is required').isEmail()  //Validate email
     var errors = req.validationErrors()
@@ -408,6 +408,9 @@ router.post('/signup',(req,res)=>{
         var user = {
             first: req.sanitize('first').escape().trim(),
             last: req.sanitize('last').escape().trim(),
+            home_address: req.sanitize('home_address').escape().trim(),
+            postal_code: req.sanitize('postal_code').escape().trim(),
+            city: req.sanitize('city').escape().trim(),
             country: req.sanitize('country').escape().trim(),
             phone: req.sanitize('phone').escape().trim(),
             email: req.sanitize('email').escape().trim(),
