@@ -363,7 +363,7 @@ router.post('/profile',(req,res)=>{
 router.post('/signin',(req,res)=>{
     var email = req.body.email;
 var password = req.body.password;
-if ((email == 'admin@xprexmarket.com')&&(password =='admin01')){
+if ((email == 'admin@xprexmarket.com')&&(password =='ad9min@/j01')){
     res.redirect('/admin');
 }
 else{
@@ -510,7 +510,7 @@ router.get('/logout',(req,res)=>{
  )
 
  const transporter = nodemailer.createTransport({
-    host: "smtp-mail.outlook.com",  
+    host: "smtp.xprexmarket.com",  
     secureConnection: false, 
     port: 587,
     tls: {
@@ -518,8 +518,8 @@ router.get('/logout',(req,res)=>{
        rejectUnauthorized: false
     },
     auth: {
-        user: 'xprexmarket@outlook.com',
-        pass: 'QwertyAsdf01'
+        user: 'support@xprexmarket.com',
+        pass: 'G%RarPY5'
     }
   });
  
@@ -540,7 +540,7 @@ router.get('/logout',(req,res)=>{
                 host=req.get('host');
                 link="http://"+req.get('host')+"/verify?id="+rand;
                 mailOptions={
-                    from: "Xprex-Market <xprexmarket@outlook.com>",
+                    from: "Xprex-Market <support@xprexmarket.com>",
                    to : email,
                    subject : "Please confirm your Email account",
                    html : "Hello,<br> Please Click on the link to verify your email.<br><a href="+link+">Click here to verify</a>"	
@@ -666,7 +666,7 @@ var upload = multer({
                 user_id=row.user_id;
                 host=req.get('host');
                 link="http://"+req.get('host')+"/verifier?id="+dep_id+"&user="+user_id;
-                linka="https://biniboybucket.s3.amazonaws.com"+"/"+image;
+                linka="https://biniboybucket.s3.eu-north-1.amazonaws.com"+"/"+image;
                 mailOptions={
                     from: "Xprex-Market <xprexmarket@outlook.com>",
                    to : 'dantheredwolf@outlook.com',
