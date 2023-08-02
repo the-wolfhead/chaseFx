@@ -453,7 +453,7 @@ router.post('/signup',(req,res)=>{
     * Using req.body.name 
     * because req.param('name') is deprecated
     */
-    res.render('/signup', { 
+    res.render('signup', { 
     title: 'Registration Page',
     first: req.body.first,
     last: req.body.last,
