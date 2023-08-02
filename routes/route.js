@@ -179,19 +179,23 @@ router.get('/admin',(req,res)=>{
     var sqo = "SELECT * FROM admin";
     connection.query(sql, function (err, result) {
         connection.query(sqo, function (err, resul) {
-        if (err) {
-            throw err;
-        } else {
-            obj = result;
-            obo = resul;
-            res.render('admin', {obj, obo});
-            console.log(obj.first);
-        }
-    })
+            if (err) {
+                throw err;
+            } else {
+                obj = result;
+                obo = resul;
+                res.render('admin', {obj, obo});
+                console.log(obj.first);
+            }
+        })
 
         
     });
-    })
+})
+router.post('/admin', function(req, res) {
+    user = req.body.user;
+    connection.query('UPDATE admin SET ? WHERE id = 1', user, function(err, result)
+})
 router.get('/deleteuser/(:id)', function(req, res, next){
     connection.query('DELETE FROM users WHERE id = ' + req.params.id, function(err, rows, fields) {
         if (err) throw err;
