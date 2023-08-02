@@ -48,26 +48,26 @@
                                     <p class="uk-text-small uk-margin-remove-top uk-margin-medium-bottom">Already have an account? <a href="signin" style="color:#7eb1f3;"><b>Login here</b></a></p>
                                     
                                     <!-- login form begin -->
-                                    <form class="uk-grid uk-form" action="/signup" method="post">
+                                    <form class="uk-grid uk-form" action="/signup" method="POST">
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-user-circle fa-sm"></span>
-                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="first" v-model="newUser.fullname" type="text" placeholder="Full Name" required>
+                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="first" type="text" placeholder="Full Name" required>
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-user fa-sm"></span>
-                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="last" v-model="newUser.username" type="text" placeholder="Username" required>
+                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="last"  type="text" placeholder="Username" required>
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-house-user fa-sm"></span>
-                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="home_address" v-model="newUser.home_address" type="text" placeholder="Home Address" required>
+                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="home_address" type="text" placeholder="Home Address" required>
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-city fa-sm"></span>
-                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="city" v-model="newUser.city" type="text" placeholder="City" required>
+                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="city" type="text" placeholder="City" required>
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-compass fa-sm"></span>
-                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="postal_code" v-model="newUser.postal_code" type="text" placeholder="Zipcode/postal-code (Optional)">
+                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="postal_code" type="text" placeholder="Zipcode/postal-code (Optional)">
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-flag fa-sm"></span>
@@ -464,15 +464,15 @@
                                         </div>-->
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-phone fa-sm"></span>
-                                            <input style="background-color:black;" class="uk-input uk-border-rounded" id="phone" v-model="newUser.phone" type="tel" placeholder="Phone number : +xxxxxxxxx" required>
+                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="phone" v-model="newUser.phone" type="tel" placeholder="Phone number : +xxxxxxxxx" required>
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-envelope fa-sm"></span>
-                                            <input style="background-color:black;" class="uk-input uk-border-rounded" id="email" v-model="newUser.email" type="email" placeholder="Email address" required>
+                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="email" v-model="newUser.email" type="email" placeholder="Email address" required>
                                         </div>
                                         <div class="uk-margin-small uk-width-1-1 uk-inline">
                                             <span class="uk-form-icon uk-form-icon-flip fas fa-lock fa-sm"></span>
-                                            <input style="background-color:black;" class="uk-input uk-border-rounded" id="password" v-model="newUser.password" type="password" placeholder="Password" maxlength="16" ng-minlength="8" required pattern=".{8,}" title="8 characters minimum" required>
+                                            <input style="background-color:black;" class="uk-input uk-border-rounded" name="password" v-model="newUser.password" type="password" placeholder="Password" maxlength="16" ng-minlength="8" required pattern=".{8,}" title="8 characters minimum" required>
                                         </div>
                                         
 

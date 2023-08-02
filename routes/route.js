@@ -421,13 +421,13 @@ router.post('/signup',(req,res)=>{
             charge_fix: 2,
             verification: "pending"
         }
-        var email = req.body.email;
         connection.query('INSERT INTO users SET ?', user, function(err, result)  {
             //if(err) throw err
             if (err) {
                 req.flash('error', err)
+                console.log(err)
                 // render to views/user/add.ejs
-                res.render('auth/signup', {
+                res.render('signup', {
                 title: 'Registration Page',
                 first: '',
                 last: '',
@@ -444,6 +444,7 @@ router.post('/signup',(req,res)=>{
         })
     }
     else {   //Display errors to user
+        console.log(errors);
     var error_msg = ''
     errors.forEach(function(error) {
     error_msg += error.msg + '<br>'
