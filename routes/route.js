@@ -1,5 +1,6 @@
 //users.js in routes/users.js
 const express = require('express');
+require('dotenv').config();
 var async = require('async'), connection;
 const router = express.Router();
 const helpers = require('../helpers');

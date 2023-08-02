@@ -16,6 +16,7 @@ const passport = require('passport');
 var createError = require('http-errors');
 var randtoken = require('rand-token');
 var path = require('path');
+require('dotenv').config();
 
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
