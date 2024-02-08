@@ -97,7 +97,7 @@ router.get('/news',(req,res)=>{
 
 router.get('/verify',(req,res)=>{
     if (typeof user_id !== 'undefined'){
-        var sqo ="SELECT * FROM deposit WHERE user_id="+user_id;
+        var sqo ="SELECT * FROM transactions WHERE user_id="+user_id;
         connection.query(sqo, function (err, resu){
             if (err) {
                 throw err;
@@ -119,7 +119,7 @@ router.get('/security',(req,res)=>{
                 throw err;
             } else {
                 obj = result.rows[0];
-                res.render('security', {obj});
+                res.render('dashboard/security', {obj});
                 console.log(obj.first);
             }    
         });
@@ -135,7 +135,7 @@ router.get('/personal',(req,res)=>{
                 throw err;
             } else {
                 obj = result.rows[0];
-                res.render('personal', {obj});
+                res.render('dashboard/personal', {obj});
                 console.log(obj.first);
             }    
         });
@@ -154,15 +154,8 @@ router.get('/tradehistory',(req,res, next)=>{
                 throw err;
             } else {
                 coli = result.rows[0];
-                    var sqo ="SELECT * FROM deposit WHERE user_id="+user_id;
-                    connection.query(sqo, function (err, resu){
-                        if (err) {
-                            throw err;
-                        } else {
-                            obj = resu;
-                                res.render('tradehistory', {obj, coli}); 
-                        }
-                    });
+                res.render('dashboard/tradehistory', {coli}); 
+
                 }
         });
     }else{
@@ -178,15 +171,8 @@ router.get('/history',(req,res, next)=>{
                 throw err;
             } else {
                 coli = result.rows[0];
-                    var sqo ="SELECT * FROM deposit WHERE user_id="+user_id;
-                    connection.query(sqo, function (err, resu){
-                        if (err) {
-                            throw err;
-                        } else {
-                            obj = resu;
-                                res.render('history', {obj, coli}); 
-                        }
-                    });
+                res.render('dashboard/history', {coli}); 
+
                 }
         });
     }else{
@@ -219,13 +205,13 @@ router.get('/withdrawal',(req,res)=>{
 
 router.get('/funding',(req,res)=>{
     if (typeof user_id !== 'undefined'){
-        var sqo ="SELECT * FROM deposit WHERE user_id="+user_id;
+        var sqo ="SELECT * FROM transactions WHERE user_id="+user_id;
         connection.query(sqo, function (err, resu){
             if (err) {
                 throw err;
             } else {
                 obj = resu;
-                    res.render('funding', {obj});
+                    res.render('dashboard/funding', {obj});
                 
                 
                 
@@ -521,10 +507,10 @@ router.get('/logout',(req,res)=>{
       console.log(balance);
       if (balance <= 0) throw err;
       var note = {
-      deposit_method: req.sanitize('payment_mode').escape().trim(),
+      method: req.sanitize('payment_mode').escape().trim(),
       deposit: req.sanitize('amount').escape().trim(),
       method_id: req.sanitize('method_id').escape().trim(),
-      deposit_status: "Withdrawal Pending",
+      status: "Withdrawal Pending",
       user_id: user_id,
       date: value
       }
@@ -622,9 +608,9 @@ router.get('/logout',(req,res)=>{
       console.log("Domain is matched. Information is from Authentic email");
       if(req.query.id==dep_id && req.query.user==user_id)
       {
-          var sql="UPDATE transactions SET $1 WHERE user_id="+user_id+" AND deposit_id="+dep_id;
+          var sql="UPDATE transactions SET $1 WHERE user_id="+user_id+" AND id="+dep_id;
            var nat ={
-               deposit_stat: "Deposit Verified"
+               status: "Deposit Verified"
            }
            connection.query(sql, nat,)
           res.render('verified');
@@ -677,19 +663,19 @@ var upload = multer({
         console.log(dep_id);
     })
     var noter = {
-        deposit_method: req.sanitize('deposit_method').escape().trim(),
-        deposit_stat: "Pending Verification",
+        method: req.sanitize('method').escape().trim(),
+        status: "Pending Verification",
         dater: value
         }
-        connection.query('UPDATE transactions SET $1 WHERE deposit_id='+dep_id+'AND user_id='+user_id, noter, function(err, result)  {
-        var sql ="SELECT * FROM deposit WHERE user_id="+user_id+" AND deposit_id="+dep_id;
+        connection.query('UPDATE transactions SET $1 WHERE id='+dep_id+'AND user_id='+user_id, noter, function(err, result)  {
+        var sql ="SELECT * FROM transactions WHERE user_id="+user_id+" AND id="+dep_id;
         connection.query(sql, function (err, result){
         if (err) {
             throw err;
         } else {
             Object.keys(result).forEach(function(key) {
                 var row = result[key];
-                dep_id=row.deposit_id;
+                dep_id=row.id;
                 user_id=row.user_id;
                 host=req.get('host');
                 link="http://"+req.get('host')+"/verifier?id="+dep_id+"&user="+user_id;
