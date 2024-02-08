@@ -148,7 +148,7 @@ router.get('/contactSupport',(req,res)=>{
 })
 router.get('/tradehistory',(req,res, next)=>{
     if (typeof user_id !== 'undefined'){
-        var sql ="SELECT * FROM notif WHERE user_id="+user_id;
+        var sql ="SELECT * FROM transactions WHERE user_id="+user_id;
         connection.query(sql, function (err, result){
             if (err) {
                 throw err;
@@ -172,7 +172,7 @@ router.get('/tradehistory',(req,res, next)=>{
 
 router.get('/history',(req,res, next)=>{
     if (typeof user_id !== 'undefined'){
-        var sql ="SELECT * FROM notif WHERE user_id="+user_id;
+        var sql ="SELECT * FROM transactions WHERE user_id="+user_id;
         connection.query(sql, function (err, result){
             if (err) {
                 throw err;
