@@ -55,7 +55,7 @@ router.get('/dashboard',(req,res)=>{
         if (err) {
             throw err;
         } else {
-            obj = result;
+            obj = result.rows[0];
             res.render('dashboard/welcome', {obj});
             console.log(obj.first);
         }
@@ -69,7 +69,7 @@ router.get('/fundamental-analysis',(req,res)=>{
             if (err) {
                 throw err;
             } else {
-                obj = result;
+                obj = result.rows[0];
                 res.render('fundamental-analysis', {obj});
                 console.log(obj.email);
             }    
@@ -102,7 +102,7 @@ router.get('/security',(req,res)=>{
             if (err) {
                 throw err;
             } else {
-                obj = result;
+                obj = result.rows[0];
                 res.render('security', {obj});
                 console.log(obj.first);
             }    
@@ -118,7 +118,7 @@ router.get('/personal',(req,res)=>{
             if (err) {
                 throw err;
             } else {
-                obj = result;
+                obj = result.rows[0];
                 res.render('personal', {obj});
                 console.log(obj.first);
             }    
@@ -137,7 +137,7 @@ router.get('/tradehistory',(req,res, next)=>{
             if (err) {
                 throw err;
             } else {
-                coli = result;
+                coli = result.rows[0];
                     var sqo ="SELECT * FROM deposit WHERE user_id="+user_id;
                     connection.query(sqo, function (err, resu){
                         if (err) {
@@ -204,7 +204,7 @@ router.get('/admin',(req,res)=>{
             if (err) {
                 throw err;
             } else {
-                obj = result;
+                obj = result.rows[0];
                 obo = resul;
                 res.render('admin', {obj, obo});
                 console.log(obj.first);
