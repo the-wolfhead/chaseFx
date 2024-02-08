@@ -41,18 +41,11 @@
 
 
 	<!-- this is the preloader section  -->
-	<div class="preloader">
-		<div class="loader">
-			<center>
-				<img src="dashboard/images/preloader.gif"style='padding-top: 10em;'>
-			</center>
-
-		</div>
-	</div>
+	
 
     <div class = "blocked  display-none">
 
-            <a href = "logout.php">
+            <a href = "logout">
             <button type="button" class="btn btn-danger  block-btn"> &nbsp Sign out <i class="fas fa-user-slash"></i> </button></a>
             <h2> <b> ACCOUNT BLOCKED </b> </h2>
 
@@ -207,7 +200,7 @@ function changeLanguageByButtonClick() {
                        <i class="fas fa-power-off"></i>  <span> EXIT </span>
                     </a>
 
-                    <a href="funding.php" class="acc-fund mobile-none">
+                    <a href="funding" class="acc-fund mobile-none">
                         <button type="button" class="btn btn-primary custom-acc-funding">
                             <i class="fas fa-money-bill-wave"></i>  <span>Account Funding  </span>
                         </button>
@@ -243,7 +236,7 @@ function changeLanguageByButtonClick() {
 			.then(willDelete => {
 			if (willDelete) {
 			  $.ajax({
-			  	url: "../include/logout.php",
+			  	url: "../include/logout",
 			  	success: function(data, request, setting){
 			  		// reload the windows
 					location.reload();
@@ -265,8 +258,8 @@ function changeLanguageByButtonClick() {
                 <div class="col-md-6 list-icon">
                     <ul>
                         <li>  <a href = "fundamental-analysis">  <i class="fas fa-chart-pie"></i>   </a> </li>
-                        <li>  <a href = "news.php">  <i class="fas fa-tv"></i>   </a> </li>
-                        <li>  <a href = "technical-analysis.php">  <i class="fas fa-signal"></i>   </a> </li>
+                        <li>  <a href = "news">  <i class="fas fa-tv"></i>   </a> </li>
+                        <li>  <a href = "technical-analysis">  <i class="fas fa-signal"></i>   </a> </li>
                         <li>  <a href = "calculator">  <i class="far fa-calendar-alt"></i>   </a> </li>
                     </ul>
                 </div>
@@ -308,7 +301,7 @@ function changeLanguageByButtonClick() {
                           </li>
                         </div>
 
-                        <li> <a href="welcome.php"> <i class="fas fa-tachometer-alt"></i> TRADING  </a> </li>
+                        <li> <a href="welcome"> <i class="fas fa-tachometer-alt"></i> TRADING  </a> </li>
 
                         <!-- ========================================================================================= -->
                         <div class = "acc_drop_head mobile-none">
@@ -317,14 +310,14 @@ function changeLanguageByButtonClick() {
 
                             <div class = "sub_drop acc_drop">
                               <ul>
-                                <li> <a href = "funding.php"> <i class="fas fa-money-bill-wave"></i> Account Funding  </a></li>
-                                <li> <a href = "withdrawal.php"> <i class="fas fa-money-bill-wave"></i> Withdrawals </a></li>
+                                <li> <a href = "funding"> <i class="fas fa-money-bill-wave"></i> Account Funding  </a></li>
+                                <li> <a href = "withdrawal"> <i class="fas fa-money-bill-wave"></i> Withdrawals </a></li>
                               </ul>
                             </div>
 
                           </div>
-                          <li class = "desktop-none"> <a href = "funding.php"> <i class="fas fa-money-bill-wave"></i> Account Funding  </a></li>
-                          <li class = "desktop-none"> <a href = "withdrawal.php"> <i class="fas fa-money-bill-wave"></i> Withdrawals </a></li>
+                          <li class = "desktop-none"> <a href = "funding"> <i class="fas fa-money-bill-wave"></i> Account Funding  </a></li>
+                          <li class = "desktop-none"> <a href = "withdrawal"> <i class="fas fa-money-bill-wave"></i> Withdrawals </a></li>
                            <!-- ========================================================================================= -->
 
                            <!-- ========================================================================================= -->
@@ -333,14 +326,14 @@ function changeLanguageByButtonClick() {
 
                            <div class = "state_drop mobile-none">
                               <ul>
-                                <li> <a href = "history.php"> <i class="fas fa-chart-bar"></i> &nbsp Transaction History  </a></li>
-                                <li> <a href = "trade-history.php"> <i class="fas fa-chart-pie"></i>  &nbsp Trading History </a></li>
+                                <li> <a href = "history"> <i class="fas fa-chart-bar"></i> &nbsp Transaction History  </a></li>
+                                <li> <a href = "trade-history"> <i class="fas fa-chart-pie"></i>  &nbsp Trading History </a></li>
                               </ul>
                             </div>
 
                           </div>
-                          <li class = "desktop-none"> <a href = "history.php"> <i class="fas fa-chart-bar"></i> &nbsp Transaction History  </a></li>
-                           <li class = "desktop-none"> <a href = "trade-history.php"> <i class="fas fa-chart-pie"></i>  &nbsp Trading History </a></li>
+                          <li class = "desktop-none"> <a href = "history"> <i class="fas fa-chart-bar"></i> &nbsp Transaction History  </a></li>
+                           <li class = "desktop-none"> <a href = "trade-history"> <i class="fas fa-chart-pie"></i>  &nbsp Trading History </a></li>
                           <!-- ========================================================================================= -->
 
                           <div class = "setting_drop_head">
@@ -348,18 +341,18 @@ function changeLanguageByButtonClick() {
 
                             <div class = "setting_drop mobile-none" >
                               <ul>
-                                <li> <a href = "personal.php"> <i class="fas fa-user"></i> &nbsp  Personal Data </a></li>
-                                <li> <a href = "security.php"> <i class="fas fa-cogs"></i>  Security Setting  </a></li>
+                                <li> <a href = "personal"> <i class="fas fa-user"></i> &nbsp  Personal Data </a></li>
+                                <li> <a href = "security"> <i class="fas fa-cogs"></i>  Security Setting  </a></li>
                               </ul>
                             </div>
 
                           </div>
-                          <li class = "desktop-none"> <a href = "personal.php"> <i class="fas fa-user"></i> &nbsp  Personal Data </a></li>
-                          <li class = "desktop-none"> <a href = "security.php"> <i class="fas fa-cogs"></i>  Security Setting  </a></li>
+                          <li class = "desktop-none"> <a href = "personal"> <i class="fas fa-user"></i> &nbsp  Personal Data </a></li>
+                          <li class = "desktop-none"> <a href = "security"> <i class="fas fa-cogs"></i>  Security Setting  </a></li>
                           <!-- ==================================================================== -->
 
 
-                        <li> <a href="contact.php"> <i class="fas fa-life-ring"></i>  SUPPORT  </a> </li>
+                        <li> <a href="contact"> <i class="fas fa-life-ring"></i>  SUPPORT  </a> </li>
 
                         <li class = "desktop-none white"> <a id="logout2"> <i class="fas fa-power-off"></i>   Exit  </a> </li>
                     </ul>
@@ -415,7 +408,7 @@ function changeLanguageByButtonClick() {
           .then(willDelete => {
           if (willDelete) {
             $.ajax({
-              url: "../include/logout.php",
+              url: "../include/logout",
               success: function(data, request, setting){
                 // reload the windows
               location.reload();
@@ -473,7 +466,7 @@ function changeLanguageByButtonClick() {
             <span >  © 2020  </span>
              ChaseFx   
             <a href = "#"> Terms </a>  |
-            <a href = "policies.php"> Policy </a>
+            <a href = "policies"> Policy </a>
         </p>
 
 

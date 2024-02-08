@@ -70,7 +70,23 @@ router.get('/fundamental-analysis',(req,res)=>{
                 throw err;
             } else {
                 obj = result.rows[0];
-                res.render('fundamental-analysis', {obj});
+                res.render('dashboard/fundamental-analysis', {obj});
+                console.log(obj.email);
+            }    
+        });
+    }else{
+        res.redirect('../login');
+    }
+})
+router.get('/news',(req,res)=>{
+    if (typeof user_id !== 'undefined'){
+        var sql = "SELECT * FROM users WHERE id="+user_id;
+        connection.query(sql, function (err, result) {
+            if (err) {
+                throw err;
+            } else {
+                obj = result.rows[0];
+                res.render('dashboard/news', {obj});
                 console.log(obj.email);
             }    
         });
