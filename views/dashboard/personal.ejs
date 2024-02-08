@@ -41,7 +41,7 @@
 
 
 	<!-- this is the preloader section  -->
-	
+	<% obj.forEach(function(obj) { %>
 
     <div class = "blocked  display-none">
 
@@ -464,13 +464,13 @@ function changeLanguageByButtonClick() {
 
                     <input class = "" name = "account_type" type = "text" value = "Options Trading" readonly = 'readonly'>
 
-                    <input class = "" name = "fname" type = "text" value = "Daniel Otabor"  readonly = 'readonly'>
+                    <input class = "" name = "fname" type = "text" value = "<%= obj.fname %>"  readonly = 'readonly'>
 
 
-                    <input class = "" name = "email" type = "text" value = "danieldamianotabor@gmail.com"  readonly = 'readonly'>
+                    <input class = "" name = "email" type = "text" value = "<%= obj.email %>"  readonly = 'readonly'>
 
 
-                    <input class = "white" id= " " type = "text" value = "09077006672" readonly = 'readonly'>
+                    <input class = "white" id= " " type = "text" value = "<%= obj.phone %>" readonly = 'readonly'>
 
 
 
@@ -535,7 +535,7 @@ function changeLanguageByButtonClick() {
                         </div>
 
                         <div class="modal-body">
-                            I,Daniel Otabor  certify that on 2024-02-04 17:22:31 have selected unique login information (user name/email and password)
+                            I,<%= obj.fname %>  certify that on 2024-02-04 17:22:31 have selected unique login information (user name/email and password)
                             and possess full access to my account; that it is my duty not to share them with anyone else other than the  ChaseFx   staff
                             for the purpose of assisting me on the use of the platform and that in the event of needing assistance accessing my account I will
                             contact only  ChaseFx   and I will do so by email, chat or phone. I acknowledge that the  ChaseFx   staff will be available to
@@ -589,7 +589,7 @@ function changeLanguageByButtonClick() {
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+    <% }); %>
   </body>
 </html>
 
