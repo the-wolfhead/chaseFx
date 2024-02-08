@@ -170,6 +170,30 @@ router.get('/tradehistory',(req,res, next)=>{
     }
 })
 
+router.get('/history',(req,res, next)=>{
+    if (typeof user_id !== 'undefined'){
+        var sql ="SELECT * FROM notif WHERE user_id="+user_id;
+        connection.query(sql, function (err, result){
+            if (err) {
+                throw err;
+            } else {
+                coli = result.rows[0];
+                    var sqo ="SELECT * FROM deposit WHERE user_id="+user_id;
+                    connection.query(sqo, function (err, resu){
+                        if (err) {
+                            throw err;
+                        } else {
+                            obj = resu;
+                                res.render('history', {obj, coli}); 
+                        }
+                    });
+                }
+        });
+    }else{
+        res.redirect('../login');
+    }
+})
+
 router.get('/withdrawal',(req,res)=>{
     if (typeof user_id !== 'undefined'){
         var sql ="SELECT * FROM users WHERE id="+user_id;
@@ -193,7 +217,7 @@ router.get('/withdrawal',(req,res)=>{
     
 })
 
-router.get('/deposit',(req,res)=>{
+router.get('/funding',(req,res)=>{
     if (typeof user_id !== 'undefined'){
         var sqo ="SELECT * FROM deposit WHERE user_id="+user_id;
         connection.query(sqo, function (err, resu){
@@ -201,7 +225,7 @@ router.get('/deposit',(req,res)=>{
                 throw err;
             } else {
                 obj = resu;
-                    res.render('deposit', {obj});
+                    res.render('funding', {obj});
                 
                 
                 
