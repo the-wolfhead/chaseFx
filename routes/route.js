@@ -13,7 +13,7 @@ var multerS3 = require('multer-s3');
 var aws = require('aws-sdk')
 var path = require('path');
 var s3 = new aws.S3();
-//signin handle
+//login handle
 router.get('/', (req,res)=>{
                 res.render('index');
             }
@@ -75,7 +75,7 @@ router.get('/fundamental-analysis',(req,res)=>{
             }    
         });
     }else{
-        res.redirect('../signin');
+        res.redirect('../login');
     }
 })
 
@@ -92,7 +92,7 @@ router.get('/verify',(req,res)=>{
             }
         });
     }else{
-        res.redirect('../signin');
+        res.redirect('../login');
     }
 })
 router.get('/security',(req,res)=>{
@@ -108,7 +108,7 @@ router.get('/security',(req,res)=>{
             }    
         });
     }else{
-        res.redirect('../signin');
+        res.redirect('../login');
     }
 })
 router.get('/personal',(req,res)=>{
@@ -124,7 +124,7 @@ router.get('/personal',(req,res)=>{
             }    
         });
     }else{
-        res.redirect('../signin');
+        res.redirect('../login');
     }
 })
 router.get('/contactSupport',(req,res)=>{
@@ -150,7 +150,7 @@ router.get('/tradehistory',(req,res, next)=>{
                 }
         });
     }else{
-        res.redirect('../signin');
+        res.redirect('../login');
     }
 })
 
@@ -172,7 +172,7 @@ router.get('/withdrawal',(req,res)=>{
             }
         });
     }else{
-        res.redirect('../signin');
+        res.redirect('../login');
     }
     
 })
@@ -192,7 +192,7 @@ router.get('/deposit',(req,res)=>{
             }
         });
     }else{
-        res.redirect('../signin');
+        res.redirect('../login');
     }
 })
 
