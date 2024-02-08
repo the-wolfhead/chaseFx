@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="eng-us">
+
+<!-- Mirrored from cftcoop.com/?a=signup by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Feb 2021 19:29:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<title>ChaseFx </title>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="img/logo/favicon.png"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<!-- Font-Awesome -->
+	<!-- <link rel="stylesheet" type="text/css" href="css/fontawesome-all.css"> -->
+	<link rel="stylesheet" href="../pro.fontawesome.com/releases/v5.10.0/css/all.css"
+		integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+	<!-- Slider -->
+	<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="css/slider.css">
+	<!--Navigation Menu CSS-->
+	<link rel="stylesheet" type="text/css" href="css/navigation.css">
+	<!-- Owl carousel Styles -->
+	<link rel="stylesheet" type="text/css" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" type="text/css" href="css/owl.theme.default.css">
+	<!--Animate CSS-->
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<!-- Main Styles -->
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script src="https://kit.fontawesome.com/e44d5a293a.js" crossorigin="anonymous"></script> <!--load all styles -->
+	<script>
+function googleTranslateElementInit() {
+
+new google.translate.TranslateElement({
+
+pageLanguage: 'en'
+
+}, 'google_translate_element');
+
+}
+
+</script><script src="../translate.google.com/translate_a/elementa0d8.html?cb=googleTranslateElementInit"></script>
+	
+</head>
+
+<body>
+<!-- Preloader Start-->
+<div id="preloader">
+	<div class="row loader">
+		<div class="loader-icon"></div>
+	</div>
+</div>
+<!-- Preloader End -->
+
+<!-- Navbar START -->
+<header id="nav-transparent">
+	<nav id="navigation4" class="container navigation">
+		<div class="nav-header">
+			<a class="nav-brand" href="/index">
+				<img src="img/logo/cftcoopinv.png" alt="logo" class="main-logo" id="light_logo">
+				<img src="img/logo/cftcoop.png" alt="logo" class="main-logo" id="main_logo">
+			</a>
+			<div class="nav-toggle"></div>
+		</div>
+		<div class="nav-menus-wrapper">
+			<ul class="nav-menu align-to-right">
+				<li><a href="/index">Home</a></li>
+				<li><a href="/about">About</a></li>
+				<li><a href="/services">Services</a></li>
+				<li><a href="/support">Contact Us</a></li>
+				<!-- Button start -->
+                                              <li><a href="/login">Login</a></li>
+                        <li><a href="/signup">Register</a></li>
+                                            <!-- Button end -->
+				<li><div id="google_translate_element"></div></li>
+				
+			</ul>
+		</div>
+	</nav>
+</header>
+<!-- Navbar END -->
+
+<!-- Page Title START -->
+<div class="page-title-section" style="background-image: url('img/content/breadcrumb.jpg');">
+	<div class="black-overlay-70"></div>
+	<div class="container">
+		<h1>Registration</h1>
+	</div>
+</div>
+<!-- Page Title END -->
+
+<!--Registration Start-->
+<div class="section-wrapper section-wrapper--gray">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-12 col-lg-8 mb-4">
+				<h3 class="s-title-lg text-center">Register Here</h3>
+			</div>
+		</div>
+		
+		 
+
+ <script language=javascript>
+ function checkform() {
+  if (document.regform.fullname.value == '') {
+    alert("Please enter your full name!");
+    document.regform.fullname.focus();
+    return false;
+  }
+ 
+  
+  if (document.regform.username.value == '') {
+    alert("Please enter your username!");
+    document.regform.username.focus();
+    return false;
+  }
+  if (!document.regform.username.value.match(/^[A-Za-z0-9_\-]+$/)) {
+    alert("For username you should use English letters and digits only!");
+    document.regform.username.focus();
+    return false;
+  }
+  if (document.regform.password.value == '') {
+    alert("Please enter your password!");
+    document.regform.password.focus();
+    return false;
+  }
+  if (document.regform.password.value != document.regform.password2.value) {
+    alert("Please check your password!");
+    document.regform.password2.focus();
+    return false;
+  }
+ 
+  
+  if (document.regform.email.value == '') {
+    alert("Please enter your e-mail address!");
+    document.regform.email.focus();
+    return false;
+  }
+  if (document.regform.email.value != document.regform.email1.value) {
+    alert("Please retupe your e-mail!");
+    document.regform.email.focus();
+    return false;
+  }
+
+  for (i in document.regform.elements) {
+    f = document.regform.elements[i];
+    if (f.name && f.name.match(/^pay_account/)) {
+      if (f.value == '') continue;
+      var notice = f.getAttribute('data-validate-notice');
+      var invalid = 0;
+      if (f.getAttribute('data-validate') == 'regexp') {
+        var re = new RegExp(f.getAttribute('data-validate-regexp'));
+        if (!f.value.match(re)) {
+          invalid = 1;
+        }
+      } else if (f.getAttribute('data-validate') == 'email') {
+        var re = /^[^\@]+\@[^\@]+\.\w{2,4}$/;
+        if (!f.value.match(re)) {
+          invalid = 1;
+        }
+      }
+      if (invalid) {
+        alert('Invalid account format. Expected '+notice);
+        f.focus();
+        return false;
+      }
+    }
+  }
+
+  if (document.regform.agree.checked == false) {
+    alert("You have to agree with the Terms and Conditions!");
+    return false;
+  }
+
+  return true;
+ }
+
+ function IsNumeric(sText) {
+  var ValidChars = "0123456789";
+  var IsNumber=true;
+  var Char;
+  if (sText == '') return false;
+  for (i = 0; i < sText.length && IsNumber == true; i++) { 
+    Char = sText.charAt(i); 
+    if (ValidChars.indexOf(Char) == -1) {
+      IsNumber = false;
+    }
+  }
+  return IsNumber;
+ }
+ </script>
+ 
+ 
+  
+		
+		<!-- Form Start -->
+		<form class="white-form mt-3" method="POST" action="signup" name="regform">
+		<input type=hidden name=a value="signup">
+        <input type=hidden name=action value="signup">
+        
+			<div class="row">
+				<div class="col-md-4 col-sm-6 col-12">
+					<input type="text" placeholder="Your Name" name=fname value="" class="form-control">
+				</div>
+
+				<div class="col-md-4 col-sm-6 col-12">
+					<input type=password name=password value="" placeholder="Your Password">
+				</div>
+				<div class="col-md-4 col-sm-6 col-12">
+					<input type=password name=password2 value="" placeholder="Confirm Your Password">
+				</div>
+                <div class="col-md-4 col-sm-6 col-12">
+					  <select name="account"  class=inpts required="">
+                          <option value="">SELECT ACCOUNT TYPE</option>
+                                                            <option  value="Bitcoin Mining">Bitcoin Mining</option>
+
+                                        <option  value="Options Trading">Options/CFD Trading</option>
+                                        <option  value="Copy Trading">Copy Trading</option>
+
+                                    </select>
+				</div>
+				<div class="col-md-4 col-sm-6 col-12">
+					<select name="country" class=inpts>
+                    <option value="">SELECT COUNTRY</option>
+                                        <option >United States</option>
+                                        <option >Afghanistan</option>
+                                        <option >Albania</option>
+                                        <option >Algeria</option>
+                                        <option >American Samoa</option>
+                                        <option >Andorra</option>
+                                        <option >Angola</option>
+                                        <option >Anguilla</option>
+                                        <option >Antarctica</option>
+                                        <option >Antigua and Barbuda</option>
+                                        <option >Argentina</option>
+                                        <option >Armenia</option>
+                                        <option >Aruba</option>
+                                        <option >Australia</option>
+                                        <option >Austria</option>
+                                        <option >Azerbaidjan</option>
+                                        <option >Bahamas</option>
+                                        <option >Bahrain</option>
+                                        <option >Bangladesh</option>
+                                        <option >Barbados</option>
+                                        <option >Belarus</option>
+                                        <option >Belgium</option>
+                                        <option >Belize</option>
+                                        <option >Benin</option>
+                                        <option >Bermuda</option>
+                                        <option >Bhutan</option>
+                                        <option >Bolivia</option>
+                                        <option >Bosnia-Herzegovina</option>
+                                        <option >Botswana</option>
+                                        <option >Bouvet Island</option>
+                                        <option >Brazil</option>
+                                        <option >British Indian Ocean Territory</option>
+                                        <option >Brunei Darussalam</option>
+                                        <option >Bulgaria</option>
+                                        <option >Burkina Faso</option>
+                                        <option >Burundi</option>
+                                        <option >Cambodia</option>
+                                        <option >Cameroon</option>
+                                        <option >Canada</option>
+                                        <option >Cape Verde</option>
+                                        <option >Cayman Islands</option>
+                                        <option >Central African Republic</option>
+                                        <option >Chad</option>
+                                        <option >Chile</option>
+                                        <option >China</option>
+                                        <option >Christmas Island</option>
+                                        <option >Cocos (Keeling) Islands</option>
+                                        <option >Colombia</option>
+                                        <option >Comoros</option>
+                                        <option >Congo</option>
+                                        <option >Congo (Democratic Republic)</option>
+                                        <option >Cook Islands</option>
+                                        <option >Costa Rica</option>
+                                        <option >Croatia</option>
+                                        <option >Cuba</option>
+                                        <option >Cyprus</option>
+                                        <option >Czech Republic</option>
+                                        <option >Denmark</option>
+                                        <option >Djibouti</option>
+                                        <option >Dominica</option>
+                                        <option >Dominican Republic</option>
+                                        <option >East Timor</option>
+                                        <option >Ecuador</option>
+                                        <option >Egypt</option>
+                                        <option >El Salvador</option>
+                                        <option >Equatorial Guinea</option>
+                                        <option >Eritrea</option>
+                                        <option >Estonia</option>
+                                        <option >Ethiopia</option>
+                                        <option >Falkland Islands</option>
+                                        <option >Faroe Islands</option>
+                                        <option >Fiji</option>
+                                        <option >Finland</option>
+                                        <option >France</option>
+                                        <option >France (European Territory)</option>
+                                        <option >French Guiana</option>
+                                        <option >French Southern Territories</option>
+                                        <option >Gabon</option>
+                                        <option >Gambia</option>
+                                        <option >Georgia</option>
+                                        <option >Germany</option>
+                                        <option >Ghana</option>
+                                        <option >Gibraltar</option>
+                                        <option >Great Britain</option>
+                                        <option >Greece</option>
+                                        <option >Greenland</option>
+                                        <option >Grenada</option>
+                                        <option >Guadeloupe</option>
+                                        <option >Guam</option>
+                                        <option >Guatemala</option>
+                                        <option >Guinea</option>
+                                        <option >Guinea Bissau</option>
+                                        <option >Guyana</option>
+                                        <option >Haiti</option>
+                                        <option >Heard and McDonald Islands</option>
+                                        <option >Holy See (Vatican City State)</option>
+                                        <option >Honduras</option>
+                                        <option >Hong Kong</option>
+                                        <option >Hungary</option>
+                                        <option >Iceland</option>
+                                        <option >India</option>
+                                        <option >Indonesia</option>
+                                        <option >Iran</option>
+                                        <option >Iraq</option>
+                                        <option >Ireland</option>
+                                        <option >Israel</option>
+                                        <option >Italy</option>
+                                        <option >Ivory Coast (Cote D`Ivoire)</option>
+                                        <option >Jamaica</option>
+                                        <option >Japan</option>
+                                        <option >Jordan</option>
+                                        <option >Kazakhstan</option>
+                                        <option >Kenya</option>
+                                        <option >Kiribati</option>
+                                        <option >Kuwait</option>
+                                        <option >Kyrgyz Republic (Kyrgyzstan)</option>
+                                        <option >Laos</option>
+                                        <option >Latvia</option>
+                                        <option >Lebanon</option>
+                                        <option >Lesotho</option>
+                                        <option >Liberia</option>
+                                        <option >Libya</option>
+                                        <option >Liechtenstein</option>
+                                        <option >Lithuania</option>
+                                        <option >Luxembourg</option>
+                                        <option >Macau</option>
+                                        <option >Macedonia</option>
+                                        <option >Madagascar</option>
+                                        <option >Malawi</option>
+                                        <option >Malaysia</option>
+                                        <option >Maldives</option>
+                                        <option >Mali</option>
+                                        <option >Malta</option>
+                                        <option >Marshall Islands</option>
+                                        <option >Martinique</option>
+                                        <option >Mauritania</option>
+                                        <option >Mauritius</option>
+                                        <option >Mayotte</option>
+                                        <option >Mexico</option>
+                                        <option >Micronesia</option>
+                                        <option >Moldavia</option>
+                                        <option >Monaco</option>
+                                        <option >Mongolia</option>
+                                        <option >Montserrat</option>
+                                        <option >Morocco</option>
+                                        <option >Mozambique</option>
+                                        <option >Myanmar</option>
+                                        <option >Namibia</option>
+                                        <option >Nauru</option>
+                                        <option >Nepal</option>
+                                        <option >Netherlands</option>
+                                        <option >Netherlands Antilles</option>
+                                        <option >New Caledonia</option>
+                                        <option >New Zealand</option>
+                                        <option >Nicaragua</option>
+                                        <option >Niger</option>
+                                        <option >Nigeria</option>
+                                        <option >Niue</option>
+                                        <option >Norfolk Island</option>
+                                        <option >North Korea</option>
+                                        <option >Northern Mariana Islands</option>
+                                        <option >Norway</option>
+                                        <option >Oman</option>
+                                        <option >Pakistan</option>
+                                        <option >Palau</option>
+                                        <option >Panama</option>
+                                        <option >Papua New Guinea</option>
+                                        <option >Paraguay</option>
+                                        <option >Peru</option>
+                                        <option >Philippines</option>
+                                        <option >Pitcairn Island</option>
+                                        <option >Poland</option>
+                                        <option >Polynesia</option>
+                                        <option >Portugal</option>
+                                        <option >Puerto Rico</option>
+                                        <option >Qatar</option>
+                                        <option >Reunion</option>
+                                        <option >Romania</option>
+                                        <option >Russian Federation</option>
+                                        <option >Rwanda</option>
+                                        <option >S. Georgia & S. Sandwich Isls.</option>
+                                        <option >Saint Helena</option>
+                                        <option >Saint Kitts & Nevis Anguilla</option>
+                                        <option >Saint Lucia</option>
+                                        <option >Saint Pierre and Miquelon</option>
+                                        <option >Saint Vincent & Grenadines</option>
+                                        <option >Samoa</option>
+                                        <option >San Marino</option>
+                                        <option >Sao Tome and Principe</option>
+                                        <option >Saudi Arabia</option>
+                                        <option >Senegal</option>
+                                        <option >Seychelles</option>
+                                        <option >Sierra Leone</option>
+                                        <option >Singapore</option>
+                                        <option >Slovak Republic</option>
+                                        <option >Slovenia</option>
+                                        <option >Solomon Islands</option>
+                                        <option >Somalia</option>
+                                        <option >South Africa</option>
+                                        <option >South Korea</option>
+                                        <option >Spain</option>
+                                        <option >Sri Lanka</option>
+                                        <option >Sudan</option>
+                                        <option >Suriname</option>
+                                        <option >Svalbard and Jan Mayen Islands</option>
+                                        <option >Swaziland</option>
+                                        <option >Sweden</option>
+                                        <option >Switzerland</option>
+                                        <option >Syria</option>
+                                        <option >Taiwan</option>
+                                        <option >Tajikistan</option>
+                                        <option >Tanzania</option>
+                                        <option >Thailand</option>
+                                        <option >Togo</option>
+                                        <option >Tokelau</option>
+                                        <option >Tonga</option>
+                                        <option >Trinidad and Tobago</option>
+                                        <option >Tunisia</option>
+                                        <option >Turkey</option>
+                                        <option >Turkmenistan</option>
+                                        <option >Turks and Caicos Islands</option>
+                                        <option >Tuvalu</option>
+                                        <option >USA Minor Outlying Islands</option>
+                                        <option >Uganda</option>
+                                        <option >Ukraine</option>
+                                        <option >United Arab Emirates</option>
+                                        <option >United Kingdom</option>
+                                        <option >Uruguay</option>
+                                        <option >Uzbekistan</option>
+                                        <option >Vanuatu</option>
+                                        <option >Venezuela</option>
+                                        <option >Vietnam</option>
+                                        <option >Virgin Islands (British)</option>
+                                        <option >Virgin Islands (USA)</option>
+                                        <option >Wallis and Futuna Islands</option>
+                                        <option >Weather Stations</option>
+                                        <option >Western Sahara</option>
+                                        <option >Yemen</option>
+                                        <option >Yugoslavia</option>
+                                        <option >Zaire</option>
+                                        <option >Zambia</option>
+                                        <option >Zimbabwe</option>
+                                        </select>
+                    				</div>
+
+				<div class="col-md-4 col-sm-6 col-12">
+				<input type="text"name="phone" value="" placeholder="Your Phone Number">
+				</div>
+                <div class="col-md-4 col-sm-6 col-12">
+					<input type="text" placeholder="Your E-mail Address" name="email" value="">
+				</div>
+				<div class="col-md-4 col-sm-6 col-12">
+					<input type="text" name=email1 value="" placeholder="Retype Your E-mail">
+				</div>
+				<div class="col-md-4 col-sm-6 col-12">
+					<input type="text" placeholder="Your Upline" value='' readonly>
+				</div>
+
+								
+				<div class="col-md-12 text-center">
+				    <input type=checkbox name=agree value=1  > I agree with <a href="/rules">Terms and conditions</a><br>
+				    <button type="submit" name="signup" class="button-primary button-xl hvr-sweep-to-right mt-3">Register</button>
+				</div>
+			</div>
+		</form>
+				<!-- Form End -->
+	</div>
+</div>
+<!--Registration End-->
+
+<!-- Footer START -->
+<footer id="footer">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-4 foot-col-1">
+				<img src="img/logo/cftcoop.png" alt="logo" style="width: 300px">
+				<p class="s-mrt-40">Services provided by ChaseFx , Inc., member FINRA/SIPC, and a subsidiary of TD Ameritrade Holding Corporation. TD Ameritrade is a trademark jointly owned by TD Ameritrade IP Company, Inc. and The Toronto-Dominion Bank. © 2020 Charles Schwab & Co., Inc. All rights reserved. Member SIPC</p>
+				<h3 style="color: white">Contact Us</h3>
+				    <!-- <ul class="social-footer"> -->
+					<ul class="social-footer">
+						<li>
+									<a href="tel:+14156107655"> <i class="fas fa-phone iconhover"></i>
+							</a>
+						</li>
+						<li>
+							<a href = "mailto: support@hfxoption.com"> <i class="fas fa-envelope iconhover"></i>
+							</a>
+						</li>
+					</ul>
+			</div>
+			<div class="col-sm-6 col-md-4 col-lg-3 offset-lg-1 foot-col-2 footer-col-clone">
+				<h3>OUR SERVICES</h3>
+									<ul>
+						<li><a href="#">Business Consultation</a>
+						</li>
+						<li><a href="#">Legal Infomation</a>
+						</li>
+						<li><a href="#">Privacy and Security</a>
+						</li>
+						<li><a href="/support">contact us</a>
+						</li>
+					</ul>
+			</div>
+			
+			<div class="col-sm-12 foot-bottom">
+				<p>© 2010-2021 ChaseFx . All Rights Reserved.</p>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- Footer END -->
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/605dd0c2067c2605c0bc890c/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+<!-- Jquery -->
+<script src="js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Navbar JS -->
+<script src="js/navigation.js"></script>
+<script src="js/navigation.fixed.js"></script>
+<!-- Popper -->
+<script src="js/popper.min.js"></script>
+<!-- Include js plugin -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- Main JS -->
+<script src="js/main.js"></script>
+</body>
+
+
+<!-- Mirrored from cftcoop.com/?a=signup by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Feb 2021 19:29:09 GMT -->
+</html>

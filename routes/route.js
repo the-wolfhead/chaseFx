@@ -15,42 +15,39 @@ var path = require('path');
 var s3 = new aws.S3();
 //signin handle
 router.get('/', (req,res)=>{
-    var sqo = "SELECT * FROM admin";
-        connection.query(sqo, function (err, resul) {
-            if (err) {
-                throw err;
-            } else {
-                obo = resul;
-                res.render('index', { obo});
+                res.render('index');
             }
-        })
-})
-router.get('/signin',(req,res)=>{
-    res.render('signin');
+        )
+
+router.get('/login',(req,res)=>{
+    res.render('login');
 })
 router.get('/signup',(req,res)=>{
-    res.render('signup')
+    res.render('register')
     })
+router.get('/forgot_password',(req,res)=>{
+     res.render('forgot_password');
+})
     router.get('/terms',(req,res)=>{
         res.render('terms')
         })
-router.get('/aml_policy',(req,res)=>{
-    res.render('aml_policy')
+router.get('/support',(req,res)=>{
+    res.render('support')
     })
-router.get('/privacy_policy',(req,res)=>{
-    res.render('privacy_policy')
+router.get('/services',(req,res)=>{
+    res.render('services')
     })
 router.get('/about',(req,res)=>{
     res.render('about');
 })
 router.get('/contact',(req,res)=>{
-    res.render('contact');
+    res.render('dashboard/contact');
 })
-router.get('/faq',(req,res)=>{
-    res.render('faq');
+router.get('/technical-analysis',(req,res)=>{
+    res.render('dashboard/technical-analysis');
 })
-router.get('/notif',(req,res)=>{
-    res.render('notif');
+router.get('/calculator',(req,res)=>{
+    res.render('dashboard/calculator');
 })
 router.get('/dashboard',(req,res)=>{
     var sql = "SELECT * FROM users WHERE id="+user_id;
@@ -59,13 +56,13 @@ router.get('/dashboard',(req,res)=>{
             throw err;
         } else {
             obj = result;
-            res.render('dashboard', {obj});
+            res.render('dashboard/welcome', {obj});
             console.log(obj.first);
         }
 
     }); 
 })
-router.get('/navbarPage',(req,res)=>{
+router.get('/fundamental-analysis',(req,res)=>{
     if (typeof user_id !== 'undefined'){
         var sql = "SELECT * FROM users WHERE id="+user_id;
         connection.query(sql, function (err, result) {
@@ -73,7 +70,7 @@ router.get('/navbarPage',(req,res)=>{
                 throw err;
             } else {
                 obj = result;
-                res.render('navbarPage', {obj});
+                res.render('fundamental-analysis', {obj});
                 console.log(obj.email);
             }    
         });
@@ -98,7 +95,7 @@ router.get('/verify',(req,res)=>{
         res.redirect('../signin');
     }
 })
-router.get('/profile',(req,res)=>{
+router.get('/security',(req,res)=>{
     if (typeof user_id !== 'undefined'){
         var sql = "SELECT * FROM users WHERE id="+user_id;
         connection.query(sql, function (err, result) {
@@ -106,7 +103,23 @@ router.get('/profile',(req,res)=>{
                 throw err;
             } else {
                 obj = result;
-                res.render('profile', {obj});
+                res.render('security', {obj});
+                console.log(obj.first);
+            }    
+        });
+    }else{
+        res.redirect('../signin');
+    }
+})
+router.get('/personal',(req,res)=>{
+    if (typeof user_id !== 'undefined'){
+        var sql = "SELECT * FROM users WHERE id="+user_id;
+        connection.query(sql, function (err, result) {
+            if (err) {
+                throw err;
+            } else {
+                obj = result;
+                res.render('personal', {obj});
                 console.log(obj.first);
             }    
         });
@@ -117,7 +130,7 @@ router.get('/profile',(req,res)=>{
 router.get('/contactSupport',(req,res)=>{
     res.render('contactSupport');
 })
-router.get('/transactions',(req,res, next)=>{
+router.get('/tradehistory',(req,res, next)=>{
     if (typeof user_id !== 'undefined'){
         var sql ="SELECT * FROM notif WHERE user_id="+user_id;
         connection.query(sql, function (err, result){
@@ -131,7 +144,7 @@ router.get('/transactions',(req,res, next)=>{
                             throw err;
                         } else {
                             obj = resu;
-                                res.render('transactions', {obj, coli}); 
+                                res.render('tradehistory', {obj, coli}); 
                         }
                     });
                 }
@@ -204,7 +217,7 @@ router.post('/admin', function(req, res) {
     user ={
         whatsapp: req.body.whatsapp
     }
-    connection.query('UPDATE admin SET ? WHERE id = 1', user, function(err, result){
+    connection.query('UPDATE admin SET $1 WHERE id = 1', user, function(err, result){
         res.redirect('/admin')
     })
 })
@@ -281,7 +294,7 @@ router.post('/edituser/(:id)', function(req, res, next) {
             charge_per:req.sanitize('charge_per').escape().trim(),
             charge_fix: req.sanitize('charge_fix').escape().trim(),
 		}
-        connection.query('UPDATE users SET ? WHERE id = ' + req.params.id, user, function(err, result) {
+        connection.query('UPDATE users SET $1 WHERE id = ' + req.params.id, user, function(err, result) {
             //if(err) throw err
             if (err) {
                 req.flash('error', err)
@@ -323,7 +336,7 @@ router.post('/edituser/(:id)', function(req, res, next) {
         })
     }
 })
-router.post('/profile',(req,res)=>{
+router.post('/personal',(req,res)=>{
     req.assert('first', 'First Name is required').notEmpty()           //Validate name
     req.assert('last', 'Last Name is required').notEmpty()           //Validate name
           //Validate name
@@ -338,7 +351,7 @@ router.post('/profile',(req,res)=>{
             phone: req.sanitize('phone').escape().trim(),
         }
 
-        connection.query('UPDATE users SET ? WHERE id='+user_id, user, function(err, result)  {
+        connection.query('UPDATE users SET $1 WHERE id='+user_id, user, function(err, result)  {
             if (err) {
                 req.flash('error', err)
                 
@@ -354,118 +367,91 @@ router.post('/profile',(req,res)=>{
                 req.flash('success', 'Data updated successfully!')
                 
                 // render to views/user/add.ejs
-                res.redirect('/profile');
+                res.redirect('/personal');
             }
         })
     }
 })
 
 //Register handle
-router.post('/signin',(req,res)=>{
-    var last = req.body.last;
-var password = req.body.password;
-if ((last == 'admin@xprexmarket.com')&&(password =='ad9min@/j01')){
-    res.redirect('/admin');
-}
-else{
-    connection.query('SELECT * FROM users WHERE last = ? AND password = ?', [last, password], function(err, rows, fields) {
-        if(err) throw err
-        // if user not found
-        if (rows.length <= 0) {
-        req.flash('error', 'Please enter correct email and Password!')
-        console.log('error one')
-        res.redirect('/signin')
-        }
-        else { // if user found
-
-        // render to views/user/edit.ejs template file
-        req.session.loggedin = true;
-        req.session.uniqueSID = req.session.id;
-        req.session.email = email;
-        Object.keys(rows).forEach(function(key) {
-            var row = rows[key];
-            user_id=row.id;
-            console.log(row.id)
-          });
-            res.redirect('/dashboard')
-        
-        }            
-        })
-}
-  })
-  //signup post handle
-router.post('/signup',(req,res)=>{
-    req.assert('first', 'First Name is required').notEmpty()           //Validate name
-    req.assert('last', 'Last Name is required').notEmpty()           //Validate name
-    req.assert('country', 'Country is required').notEmpty()           //Validate name
-    req.assert('phone', 'Phone Number is required').notEmpty() 
-    req.assert('home_address', 'A valid home address is required').notEmpty()
-    req.assert('city', 'A valid city is required').notEmpty()
-    req.assert('postal_code', 'A valid postal_code is required').notEmpty()
-    req.assert('password', 'Password is required').notEmpty()   //Validate password
-    req.assert('email', 'A valid email is required').isEmail()  //Validate email
-    var errors = req.validationErrors()
-    if( !errors ) {   //No errors were found.  Passed Validation!
-        var user = {
-            first: req.sanitize('first').escape().trim(),
-            last: req.sanitize('last').escape().trim(),
-            home_address: req.sanitize('home_address').escape().trim(),
-            postal_code: req.sanitize('postal_code').escape().trim(),
-            city: req.sanitize('city').escape().trim(),
-            country: req.sanitize('country').escape().trim(),
-            phone: req.sanitize('phone').escape().trim(),
-            email: req.sanitize('email').escape().trim(),
-            password: req.sanitize('password').escape().trim(),
-            balance: 10,
-            bonus: 10,
-            charge_per: 10,
-            charge_fix: 2,
-            verification: "pending"
-        }
-        connection.query('INSERT INTO users SET ?', user, function(err, result)  {
-            //if(err) throw err
+router.post('/login', (req, res) => {
+    var email = req.body.email;
+    var password = req.body.password;
+    if (email == 'admin@xprexmarket.com' && password == 'ad9min@/j01') {
+        res.redirect('/admin');
+    } else {
+        connection.query('SELECT * FROM users WHERE email = $1 AND password = $2', [email, password], function(err, rows) {
             if (err) {
-                req.flash('error', err)
-                console.log(err)
-                // render to views/user/add.ejs
-                res.render('signup', {
-                title: 'Registration Page',
-                first: '',
-                last: '',
-                country: '',
-                phone: 00,
-                password: '',
-                email: ''                   
-                })
-            } else {                
-                req.flash('success', 'You have successfully signed up!');
-                user_id=result.insertId;
-                res.redirect('/send' );
+                console.error('Error executing query:', err);
+                req.flash('error', 'An error occurred while retrieving user information.');
+                return res.redirect('/login');
             }
-        })
-    }
-    else {   //Display errors to user
-        console.log(errors);
-    var error_msg = ''
-    errors.forEach(function(error) {
-    error_msg += error.msg + '<br>'
-    })                
-    req.flash('error', error_msg)        
-    /**
-    * Using req.body.name 
-    * because req.param('name') is deprecated
-    */
-    res.render('signup', { 
-    title: 'Registration Page',
-    first: req.body.first,
-    last: req.body.last,
-    country: req.body.country,
-    phone: req.body.phone,
-    email: req.body.email,
-    password: ''
+            // Check if rows is empty or null
+            if (!rows || rows.length === 0) {
+                console.log('No user found with the provided credentials.');
+                req.flash('error', 'Please enter correct email and Password!');
+                return res.redirect('/login');
+            } else { // if user found
+                // render to views/user/edit.ejs template file
+                req.session.loggedin = true;
+                req.session.uniqueSID = req.session.id;
+                req.session.email = email;
+                var row = rows.rows[0]; // Assuming you're only interested in the first row
+                user_id = row.id; // Accessing id property
+                console.log(row.id);
+                res.redirect('/dashboard');
+        };
     })
+}
+});
+
+
+
+  //signup post handle
+router.post('/signup', async (req, res) => {
+  try {
+    req.assert('fname', 'First Name is required').notEmpty();
+    req.assert('country', 'Country is required').notEmpty();
+    req.assert('phone', 'Phone Number is required').notEmpty();
+    req.assert('account', 'A valid account is required').notEmpty();
+    req.assert('password', 'Password is required').notEmpty();
+    req.assert('email', 'A valid email is required').isEmail();
+    
+    const errors = req.validationErrors();
+    if (!errors) {
+      const { fname, account, country, phone, email, password } = req.body;
+      const balance = 10;
+      const bonus = 10;
+      const charge_per = 10;
+      const charge_fix = 2;
+      const verification = "pending";
+
+      const query = 'INSERT INTO users (fname, account, country, phone, email, password, balance, bonus, charge_per, charge_fix, verification) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id';
+      const result = await connection.query(query, [fname, account, country, phone, email, password, balance, bonus, charge_per, charge_fix, verification]);
+      
+      req.flash('success', 'You have successfully signed up!');
+      user_id = result.rows[0].id;
+      res.redirect('/login');
+    } else {
+      const error_msg = errors.map(error => error.msg).join('<br>');
+      req.flash('error', error_msg);
+      
+      res.render('signup', { 
+        title: 'Registration Page',
+        first: req.body.first,
+        last: req.body.last,
+        country: req.body.country,
+        phone: req.body.phone,
+        email: req.body.email,
+        password: ''
+      });
     }
-})
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 //logout
 router.get('/logout',(req,res)=>{
     res.redirect('/welcome')
@@ -502,7 +488,7 @@ router.get('/logout',(req,res)=>{
       user_id: user_id,
       date: value
       }
-        connection.query('INSERT INTO deposit SET ?', note, function(err, result)  {
+        connection.query('INSERT INTO transactions SET $1', note, function(err, result)  {
             res.redirect('/transactions');
         })
         connection.query('UPDATE users SET balance='+balance + ' WHERE id ='+user_id, balance, function(err, result) {
@@ -596,7 +582,7 @@ router.get('/logout',(req,res)=>{
       console.log("Domain is matched. Information is from Authentic email");
       if(req.query.id==dep_id && req.query.user==user_id)
       {
-          var sql="UPDATE deposit SET ? WHERE user_id="+user_id+" AND deposit_id="+dep_id;
+          var sql="UPDATE transactions SET $1 WHERE user_id="+user_id+" AND deposit_id="+dep_id;
            var nat ={
                deposit_stat: "Deposit Verified"
            }
@@ -646,7 +632,7 @@ var upload = multer({
         deposit: req.sanitize('amount').escape().trim(),
         user_id: user_id
       }
-      connection.query('INSERT INTO deposit SET ?', note, function(err, result)  {
+      connection.query('INSERT INTO transactions SET $1', note, function(err, result)  {
         dep_id=result.insertId;
         console.log(dep_id);
     })
@@ -655,7 +641,7 @@ var upload = multer({
         deposit_stat: "Pending Verification",
         dater: value
         }
-        connection.query('UPDATE deposit SET ? WHERE deposit_id='+dep_id+'AND user_id='+user_id, noter, function(err, result)  {
+        connection.query('UPDATE transactions SET $1 WHERE deposit_id='+dep_id+'AND user_id='+user_id, noter, function(err, result)  {
         var sql ="SELECT * FROM deposit WHERE user_id="+user_id+" AND deposit_id="+dep_id;
         connection.query(sql, function (err, result){
         if (err) {
@@ -691,7 +677,6 @@ var upload = multer({
     });
             res.redirect('/transactions');
  })
-
  });
 module.exports  = router;
 
