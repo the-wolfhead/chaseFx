@@ -190,7 +190,7 @@ router.get('/withdrawal',(req,res)=>{
                 Object.keys(result).forEach(function(key) {
                     var row = result[key];
                     coli=row;
-                    res.render('withdrawal', {obj, coli});
+                    res.render('dashboard/withdrawal', {obj, coli});
                 console.log(row);
                 });
                 
@@ -481,7 +481,7 @@ router.post('/signup', async (req, res) => {
 
 //logout
 router.get('/logout',(req,res)=>{
-    res.redirect('/welcome')
+    res.redirect('/')
  })
  router.post('/logout',(req,res)=>{
     res.redirect('/')
