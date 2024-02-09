@@ -205,12 +205,13 @@ router.get('/withdrawal',(req,res)=>{
 
 router.get('/funding',(req,res)=>{
     if (typeof user_id !== 'undefined'){
-        var sqo ="SELECT * FROM transactions WHERE user_id="+user_id;
+        var sqo ="SELECT * FROM users WHERE id="+user_id;
         connection.query(sqo, function (err, resu){
             if (err) {
                 throw err;
             } else {
-                obj = resu;
+                obj = resu.rows[0];
+                console.log(obj);
                     res.render('dashboard/funding', {obj});
                 
                 
