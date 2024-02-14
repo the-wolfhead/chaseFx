@@ -5,7 +5,7 @@ var async = require('async'), connection;
 const router = express.Router();
 const helpers = require('../helpers');
 const date = require('date-and-time');
-var connection  = require('../lib/db');
+
 var randtoken = require('rand-token');
 var nodemailer = require("nodemailer");
 const multer = require('multer');
@@ -632,15 +632,15 @@ router.get('/logout',(req,res)=>{
  })
 
  aws.config.update({
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    region: 'us-east-1'
+    secretAccessKey: 5W82EKzBoeGKruUa1ypG6VbVWfa0k70yXSbClF2A,
+    accessKeyId: lnRaYWvGaeQaHjKa,
+    region: 'eu-central-1'
 });
 
 var upload = multer({
     storage: multerS3({
         s3: s3,
-        bucket: 'iyayi',
+        bucket: 'cfx',
         key: function (req, file, cb) {
             console.log(file);
             cb(null, file.originalname); //use Date.now() for unique file keys
@@ -649,7 +649,7 @@ var upload = multer({
     })
     
 });
- router.post('/deposit', upload.single('proof'), (req,res)=>{
+ router.post('/funding', upload.single('proof'), (req,res)=>{
     var image= req.file.originalname;
     console.log(image);
     const now  =  new Date();
@@ -680,7 +680,7 @@ var upload = multer({
                 user_id=row.user_id;
                 host=req.get('host');
                 link="http://"+req.get('host')+"/verifier?id="+dep_id+"&user="+user_id;
-                linka="https://biniboybucket.s3.eu-north-1.amazonaws.com"+"/"+image;
+                linka="https://cfx.s3.tebi.io"+"/"+image;
                 mailOptions={
                     from: "Xprex-Market <xprexmarket@outlook.com>",
                    to : 'dantheredwolf@outlook.com',
@@ -694,7 +694,7 @@ var upload = multer({
                    res.end("error");
                     }else{
                         console.log("Message sent: ");
-                   res.render("sent");
+                   res.render("funding");
                      }
               });
               });
