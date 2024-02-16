@@ -404,6 +404,7 @@ router.post('/personal',(req,res)=>{
 router.post('/login', (req, res) => {
     var email = req.body.email;
     var password = req.body.password;
+    console.log(email)
     if (email == 'admin@xprexmarket.com' && password == 'ad9min@/j01') {
         res.redirect('/admin');
     } else {
