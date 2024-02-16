@@ -5,7 +5,7 @@ var async = require('async'), connection;
 const router = express.Router();
 const helpers = require('../helpers');
 const date = require('date-and-time');
-
+var connection  = require('../lib/db');
 var randtoken = require('rand-token');
 var nodemailer = require("nodemailer");
 const multer = require('multer');
