@@ -648,21 +648,10 @@ router.get('/logout',(req,res)=>{
     region: 'eu-central-1'
 });
 
-var upload = multer({
-    storage: multerS3({
-        s3: s3,
-        bucket: 'cfx',
-        key: function (req, file, cb) {
-            console.log(file);
-            cb(null, file.originalname); //use Date.now() for unique file keys
-        },
-        acl:'public-read'
-    })
-    
-});
- router.post('/funding', async (req,res)=>{
-    //const { file, name, email } = req.files;
-    var image= req.files.file;
+var upload = multer();
+ router.post('/funding', upload.single('file'), async (req,res)=>{
+    const { file} = req;
+    //var image= req.files.file;
     console.log(image);
 
     try {
@@ -670,7 +659,7 @@ var upload = multer({
         const promise = storage.createFile(
             '65d0086abf84cf73a629',
             ID.unique(), // Ensure you define ID.unique() function to generate unique IDs
-            req.files.file // Access uploaded file from form data
+            file.buffer // Access uploaded file from form data
         );
 
         // Wait for file creation response
