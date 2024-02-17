@@ -657,7 +657,7 @@ var upload = multer({
     })
     
 });
- router.post('/funding', (req,res)=>{
+ router.post('/funding', async (req,res)=>{
     var image= req.file.originalname;
     console.log(image);
 
