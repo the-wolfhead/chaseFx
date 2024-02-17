@@ -13,6 +13,13 @@ var multerS3 = require('multer-s3');
 var aws = require('aws-sdk')
 var path = require('path');
 var s3 = new aws.S3();
+
+// Initialize Appwrite client
+const client = new Client()
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject('65d006d298586d1e239d');
+
+const storage = new Storage(client);
 //login handle
 router.get('/', (req,res)=>{
                 res.render('index');
@@ -650,9 +657,27 @@ var upload = multer({
     })
     
 });
- router.post('/funding', upload.single('proof'), (req,res)=>{
+ router.post('/funding', (req,res)=>{
     var image= req.file.originalname;
     console.log(image);
+
+    try {
+        // Create file in Appwrite storage
+        const promise = storage.createFile(
+            '65d0086abf84cf73a629',
+            ID.unique(), // Ensure you define ID.unique() function to generate unique IDs
+            req.files.file // Access uploaded file from form data
+        );
+
+        // Wait for file creation response
+        const response = await promise;
+        console.log(response); // Success
+
+        res.send('File uploaded successfully!');
+    } catch (error) {
+        console.error(error); // Log error
+        res.status(500).send('Failed to upload file.');
+    }
     const now  =  new Date();
     const value = date.format(now,'YYYY/MM/DD');
     var deposit= req.body.amount;
