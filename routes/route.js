@@ -12,8 +12,10 @@ const multer = require('multer');
 var multerS3 = require('multer-s3');
 var aws = require('aws-sdk');
 const { Client } = require("appwrite"); // Ensure the correct path to the appwrite library
+const { Storage } = require("appwrite"); // Ensure the correct path to the appwrite library
 var path = require('path');
 var s3 = new aws.S3();
+
 
 // Initialize Appwrite client
 const client = new Client()
