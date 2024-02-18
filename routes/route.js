@@ -29,13 +29,7 @@ router.get('/', (req,res)=>{
             }
         )
 
-// Define a function to generate unique IDs
-const ID = {
-    unique: function() {
-        // Generate a unique ID (you can use any method/library to generate IDs)
-        return Math.random().toString(36).substr(2, 9); // Example: Generate a random alphanumeric ID
-    }
-};
+
 
 
 router.get('/login',(req,res)=>{
@@ -658,6 +652,13 @@ router.get('/logout',(req,res)=>{
 });
 
 var upload = multer();
+// Define a function to generate unique IDs
+const ID = {
+    unique: function() {
+        // Generate a unique ID (you can use any method/library to generate IDs)
+        return Math.random().toString(36).substr(2, 9); // Example: Generate a random alphanumeric ID
+    }
+};
  router.post('/funding', upload.single('file'), async (req,res)=>{
     const { file} = req;
     //var image= req.files.file;
@@ -680,59 +681,25 @@ var upload = multer();
         console.error(error); // Log error
         res.status(500).send('Failed to upload file.');
     }
-    const now  =  new Date();
-    const value = date.format(now,'YYYY/MM/DD');
-    var deposit= req.body.amount;
-      var note ={
-        deposit: req.sanitize('amount').escape().trim(),
-        user_id: user_id
-      }
-      connection.query('INSERT INTO transactions SET $1', note, function(err, result)  {
-        dep_id=result.insertId;
-        console.log(dep_id);
-    })
-    var noter = {
-        method: req.sanitize('method').escape().trim(),
-        status: "Pending Verification",
-        dater: value
-        }
-        connection.query('UPDATE transactions SET $1 WHERE id='+dep_id+'AND user_id='+user_id, noter, function(err, result)  {
-        var sql ="SELECT * FROM transactions WHERE user_id="+user_id+" AND id="+dep_id;
-        connection.query(sql, function (err, result){
-        if (err) {
-            throw err;
-        } else {
-            Object.keys(result).forEach(function(key) {
-                var row = result[key];
-                dep_id=row.id;
-                user_id=row.user_id;
-                host=req.get('host');
-                link="http://"+req.get('host')+"/verifier?id="+dep_id+"&user="+user_id;
-                linka="https://cfx.s3.tebi.io"+"/"+image;
-                mailOptions={
-                    from: "Xprex-Market <xprexmarket@outlook.com>",
-                   to : 'dantheredwolf@outlook.com',
-                   subject : "Please confirm Payment",
-                   html : "Hello,<br> Please Click on the link to verify payment.<br><img src= "+linka+"><a href="+link+">Click here to verify</a>"	
-                }
-                console.log(mailOptions);
-                transporter.sendMail(mailOptions, function(error, response){
-                    if(error){
-                        console.log(error);
-                   res.end("error");
-                    }else{
-                        console.log("Message sent: ");
-                   res.render("funding");
-                     }
-              });
-              });
+    mailOptions={
+        from: "Xprex-Market <xprexmarket@outlook.com>",
+       to : 'dantheredwolf@outlook.com',
+       subject : "Please confirm Payment",
+       html : "Hello,<br> Please Click on the link to verify payment.<br><img src= ''><a href=''>Click here to verify</a>"	
+    }
+    console.log(mailOptions);
+    transporter.sendMail(mailOptions, function(error, response){
+        if(error){
+            console.log(error);
+       res.end("error");
+        }else{
+            console.log("Message sent: ");
+       res.render("funding");
+         }
+  });
             
             
-        }
     });
-            res.redirect('/transactions');
- })
- });
 module.exports  = router;
 
 
