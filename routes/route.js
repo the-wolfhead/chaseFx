@@ -18,7 +18,9 @@ var s3 = new aws.S3();
 
 
 // Initialize Appwrite client
-const client = new Client()
+const client = new Client();
+
+client
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject('65d006d298586d1e239d');
 
