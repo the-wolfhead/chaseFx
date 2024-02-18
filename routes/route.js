@@ -29,6 +29,15 @@ router.get('/', (req,res)=>{
             }
         )
 
+// Define a function to generate unique IDs
+const ID = {
+    unique: function() {
+        // Generate a unique ID (you can use any method/library to generate IDs)
+        return Math.random().toString(36).substr(2, 9); // Example: Generate a random alphanumeric ID
+    }
+};
+
+
 router.get('/login',(req,res)=>{
     res.render('login');
 })
