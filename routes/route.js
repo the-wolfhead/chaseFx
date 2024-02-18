@@ -240,21 +240,17 @@ router.get('/funding',(req,res)=>{
 
 router.get('/admin',(req,res)=>{
     var sql = "SELECT * FROM users";
-    var sqo = "SELECT * FROM admin";
     connection.query(sql, function (err, result) {
-        connection.query(sqo, function (err, resul) {
             if (err) {
                 throw err;
             } else {
                 obj = result.rows[0];
-                obo = resul;
-                res.render('admin', {obj, obo});
+                res.render('admin', {obj});
                 console.log(obj.first);
             }
         })
         
     });
-})
 router.post('/admin', function(req, res) {
     user ={
         whatsapp: req.body.whatsapp
