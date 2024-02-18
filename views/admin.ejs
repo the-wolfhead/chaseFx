@@ -24,14 +24,12 @@
     <a href="/admin/users">Manage Users</a>
     <h1>Users</h1>
     <div class="user-list">
-        <% users.forEach(function(user) { %>
             <div class="user-card">
                 <img src="img/content/download (1).png" alt="Profile Picture" class="user-profile-pic">
                 <p>Name: <%= obj.fname %></p>
                 <p>Email: <%= obj.email %></p>
                 <!-- Add more user details here -->
             </div>
-        <% }); %>
     </div>
 </body>
 </html>
