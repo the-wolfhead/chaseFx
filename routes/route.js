@@ -652,7 +652,7 @@ var upload = multer();
  router.post('/funding', upload.single('file'), async (req,res)=>{
     const { file} = req;
     //var image= req.files.file;
-    console.log(image);
+    //console.log(image);
 
     try {
         // Create file in Appwrite storage
