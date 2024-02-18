@@ -463,14 +463,11 @@ router.post('/signup', async (req, res) => {
     const errors = req.validationErrors();
     if (!errors) {
       const { fname, account, country, phone, email, password } = req.body;
-      const balance = 10;
-      const bonus = 10;
-      const charge_per = 10;
-      const charge_fix = 2;
+      const balance = 00;
       const verification = "pending";
 
-      const query = 'INSERT INTO users (fname, account, country, phone, email, password, balance, bonus, charge_per, charge_fix, verification) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id';
-      const result = await connection.query(query, [fname, account, country, phone, email, password, balance, bonus, charge_per, charge_fix, verification]);
+      const query = 'INSERT INTO users (fname, account, country, phone, email, password, balance,  verification) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id';
+      const result = await connection.query(query, [fname, account, country, phone, email, password, balance, verification]);
       
       req.flash('success', 'You have successfully signed up!');
       user_id = result.rows[0].id;
