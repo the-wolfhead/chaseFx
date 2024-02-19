@@ -5,37 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .user-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
         .user-card {
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
         }
         .user-profile-pic {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             object-fit: cover;
+            margin-right: 15px;
+        }
+        .user-details {
+            flex-grow: 1;
+        }
+        .user-details p {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
-    <h1>Admin Panel</h1>
-    <a href="/admin/users">Manage Users</a>
-    <h1>Users</h1>
-    <div class="user-list">
-        <% obj.forEach(function(obj) { %>
-            <div class="user-card">
-                <img src="img/content/download (1).png" alt="Profile Picture" class="user-profile-pic">
-                <p>Name: <%= obj.fname %></p>
-                <p>Email: <%= obj.email %></p>
-                <p>Balance: <%= obj.balance %></p>
-                <p>Account Type: <%= obj.account %></p>
-                <p>Country: <%= obj.country %></p>
-
-                <!-- Add more user details here -->
-            </div>
+    <div class="container">
+        <h1>Admin Panel</h1>
+        <a href="/admin/users">Manage Users</a>
+        <h2>Users</h2>
+        <ul class="user-list">
+            <% obj.forEach(function(obj) { %>
+                <li class="user-card">
+                    <img src="img/content/download (1).png" alt="Profile Picture" class="user-profile-pic">
+                    <div class="user-details">
+                        <p><strong>Name:</strong> <%= obj.fname %></p>
+                        <p><strong>Email:</strong> <%= obj.email %></p>
+                        <p><strong>Balance:</strong> <%= obj.balance %></p>
+                        <p><strong>Account Type:</strong> <%= obj.account %></p>
+                        <p><strong>Country:</strong> <%= obj.country %></p>
+                    </div>
+                </li>
             <% }); %>
+        </ul>
     </div>
 </body>
 </html>
+ 
