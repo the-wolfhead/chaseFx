@@ -245,7 +245,7 @@ router.get('/admin',(req,res)=>{
                 throw err;
             } else {
                 obj = result.rows;
-                res.render('admin', {obj});
+                res.render('admin', {obj, mode: 'light-mode'});
                 console.log(obj.first);
             }
         })
