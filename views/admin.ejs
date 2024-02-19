@@ -1,99 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <style>
+        /* Common styles */
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            transition: background-color 0.5s ease;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+
         h1 {
-            text-align: center;
-            margin-bottom: 20px;
             color: #333;
         }
-        a {
-            color: #007bff;
-            text-decoration: none;
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-        .user-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+
         .user-card {
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             background-color: #fff;
-            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .user-card:hover {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
+
         .user-profile-pic {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             object-fit: cover;
-            margin-right: 15px;
         }
-        .user-details {
-            flex-grow: 1;
+
+        /* Light mode */
+        body.light-mode {
+            background-color: #f5f5f5;
         }
-        .user-details p {
-            margin: 5px 0;
-            color: #666;
-        }
-        .edit-button {
-            background-color: #007bff;
+
+        /* Dark mode */
+        body.dark-mode {
+            background-color: #333;
             color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
         }
-        .edit-button:hover {
-            background-color: #0056b3;
+
+        .user-card.dark-mode {
+            background-color: #444;
+            border-color: #555;
+            color: #fff;
+        }
+
+        /* Toggle button styles */
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        .toggle-btn i {
+            font-size: 24px;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Admin Panel</h1>
-        <a href="/admin/users">Manage Users</a>
-        <h2>Users</h2>
-        <ul class="user-list">
-            <% obj.forEach(function(obj) { %>
-                <li class="user-card">
-                    <img src="img/content/download (1).png" alt="Profile Picture" class="user-profile-pic">
-                    <div class="user-details">
-                        <p><strong>Name:</strong> <%= obj.fname %></p>
-                        <p><strong>Email:</strong> <%= obj.email %></p>
-                        <p><strong>Balance:</strong> <%= obj.balance %></p>
-                        <p><strong>Account Type:</strong> <%= obj.account %></p>
-                        <p><strong>Country:</strong> <%= obj.country %></p>
-                    </div>
-                    <button class="edit-button" onclick="window.location.href='/admin/edit/<%= obj.id %>'">Edit</button>
-                </li>
-            <% }); %>
-        </ul>
+<body class="<%= mode %>">
+    <h1>Admin Panel</h1>
+    <button class="toggle-btn" onclick="toggleMode()">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+    </button>
+    <a href="/admin/users">Manage Users</a>
+    <h1>Users</h1>
+    <div class="user-list">
+        <% obj.forEach(function(obj) { %>
+            <div class="user-card">
+                <p><strong>Name:</strong> <%= obj.fname %></p>
+                <p><strong>Email:</strong> <%= obj.email %></p>
+                <p><strong>Balance:</strong> <%= obj.balance %></p>
+                <p><strong>Account Type:</strong> <%= obj.account %></p>
+                <p><strong>Country:</strong> <%= obj.country %></p>
+            </div>
+        <% }); %>
     </div>
+
+    <!-- JavaScript to toggle mode -->
+    <script>
+        function toggleMode() {
+            document.body.classList.toggle('light-mode');
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
 </body>
 </html>
+
