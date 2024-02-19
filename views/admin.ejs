@@ -9,15 +9,26 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         h1 {
             text-align: center;
             margin-bottom: 20px;
+            color: #333;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin-bottom: 20px;
+            display: inline-block;
         }
         .user-list {
             list-style: none;
@@ -29,8 +40,11 @@
             border-radius: 5px;
             padding: 10px;
             margin-bottom: 20px;
-            display: flex;
-            align-items: center;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+        .user-card:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
         .user-profile-pic {
             width: 50px;
@@ -44,6 +58,19 @@
         }
         .user-details p {
             margin: 5px 0;
+            color: #666;
+        }
+        .edit-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .edit-button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -63,10 +90,10 @@
                         <p><strong>Account Type:</strong> <%= obj.account %></p>
                         <p><strong>Country:</strong> <%= obj.country %></p>
                     </div>
+                    <button class="edit-button" onclick="window.location.href='/admin/edit/<%= obj.id %>'">Edit</button>
                 </li>
             <% }); %>
         </ul>
     </div>
 </body>
 </html>
- 
