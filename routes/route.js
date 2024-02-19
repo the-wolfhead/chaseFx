@@ -456,7 +456,7 @@ router.get('/logout',(req,res)=>{
  )
 
  const transporter = nodemailer.createTransport({
-    host: "smtp.xprexmarket.com",  
+    host: "smtp.chasefxonline.com",  
     secureConnection: false, 
     port: 587,
     tls: {
@@ -464,8 +464,8 @@ router.get('/logout',(req,res)=>{
        rejectUnauthorized: false
     },
     auth: {
-        user: 'support@xprexmarket.com',
-        pass: 'G%RarPY5'
+        user: 'support@chasefxonline.com',
+        pass: 'PbEiL#U7'
     }
   });
  
