@@ -244,7 +244,7 @@ router.get('/admin',(req,res)=>{
             if (err) {
                 throw err;
             } else {
-                obj = result.rows[0];
+                obj = result.rows;
                 res.render('admin', {obj});
                 console.log(obj.first);
             }
