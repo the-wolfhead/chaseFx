@@ -269,7 +269,7 @@ router.get('/admin/edit/:id', async (req, res) => {
     try {
         const userId = req.params.id;
         const query = 'SELECT * FROM users WHERE id = $1';
-        const { rows } = await pool.query(query, [userId]);
+        const { rows } = await connection.query(query, [userId]);
 
         if (rows.length === 0) {
             return res.status(404).send('User not found');
@@ -289,7 +289,7 @@ router.post('/admin/users/:id', async (req, res) => {
         const { fname, email, balance, account, country } = req.body;
 
         const query = 'UPDATE users SET fname = $1, email = $2, balance = $3, account = $4, country = $5 WHERE id = $6';
-        await pool.query(query, [fname, email, balance, account, country, userId]);
+        await connection.query(query, [fname, email, balance, account, country, userId]);
 
         res.redirect('/admin');
     } catch (error) {
