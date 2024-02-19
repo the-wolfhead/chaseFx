@@ -264,116 +264,38 @@ router.get('/deleteuser/(:id)', function(req, res, next){
         if (err) throw err;
         res.redirect('/admin');
     })
-})
-router.get('/edituser/(:id)', function(req, res, next){
-    connection.query('SELECT * FROM users WHERE id = ' + req.params.id, function(err, rows, fields) {
-        if(err) throw err
-        
-        // if user not found
-        if (rows.length <= 0) {
-            
-            req.flash('error', 'User not found with id = ' + req.params.id)
-            res.redirect('/admin')
+})router.get('/admin/edit/:id', async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const query = 'SELECT * FROM users WHERE id = $1';
+        const { rows } = await pool.query(query, [userId]);
+
+        if (rows.length === 0) {
+            return res.status(404).send('User not found');
         }
-        else { // if user found
-            // render to views/user/edit.ejs template file
-            res.render('edituser', {
-                title: 'Edit User', 
-                //data: rows[0],
-                id: rows[0].id,
-                first: rows[0].first,
-                last: rows[0].last,
-                phone: rows[0].phone,
-                deposit: rows[0].deposit,
-                email: rows[0].email,
-                balance: rows[0].balance,
-                charge_per: rows[0].charge_per,
-                charge_fix: rows[0].charge_fix,
-            })
-        }			
-    })
 
-})
-
-        // EDIT USER POST ACTION
-router.post('/edituser/(:id)', function(req, res, next) {
-    req.assert('first', 'First Name is required').notEmpty()           //Validate name
-    req.assert('last', 'Last Name is required').notEmpty()           //Validate name
-    req.assert('phone', 'Phone Number is required').notEmpty() 
-    req.assert('balance', 'Balance is required').notEmpty()   //Validate password
-    req.assert('email', 'A valid email is required').isEmail()  //Validate email
-    req.assert('deposit', 'Deposit is required').notEmpty()  
-    req.assert('charge_per', 'Charge Percentage is required').notEmpty()  
-    req.assert('charge_fix', 'Fixed Charge is required').notEmpty()  
-    req.assert('bonus', 'Bonus is required').notEmpty() 
-    req.assert('profit', 'Profit is required').notEmpty() 
-    var errors = req.validationErrors()
-    
-    if( !errors ) {   //No errors were found.  Passed Validation!
-		
-		/********************************************
-		 * Express-validator module
-		 
-		req.body.comment = 'a <span>comment</span>';
-		req.body.username = '   a user    ';
-
-		req.sanitize('comment').escape(); // returns 'a <span>comment</span>'
-		req.sanitize('username').trim(); // returns 'a user'
-		********************************************/
-		var user = {
-			first: req.sanitize('first').escape().trim(),
-            last: req.sanitize('last').escape().trim(),
-            phone: req.sanitize('phone').escape().trim(),
-            email: req.sanitize('email').escape().trim(),
-            balance: req.sanitize('balance').escape().trim(),
-            profit: req.sanitize('profit').escape().trim(),
-            deposit: req.sanitize('deposit').escape().trim(),
-            bonus: req.sanitize('bonus').escape().trim(),
-            charge_per:req.sanitize('charge_per').escape().trim(),
-            charge_fix: req.sanitize('charge_fix').escape().trim(),
-		}
-        connection.query('UPDATE users SET $1 WHERE id = ' + req.params.id, user, function(err, result) {
-            //if(err) throw err
-            if (err) {
-                req.flash('error', err)
-                
-                // render to views/user/add.ejs
-                res.render('editauser', {
-                    title: 'Edit User',
-                    id: req.params.id,
-                    name: req.body.name,
-                    age: req.body.age,
-                    email: req.body.email
-                })
-            } else {
-                req.flash('success', 'Data updated successfully!')
-                
-                // render to views/user/add.ejs
-                res.redirect('/admin');
-            }
-        })
-		
-	}
-	else {   //Display errors to user
-		var error_msg = ''
-		errors.forEach(function(error) {
-			error_msg += error.msg + '<br>'
-		})
-		req.flash('error', error_msg)
-		
-		/**
-		 * Using req.body.name 
-		 * because req.param('name') is deprecated
-		 */ 
-        res.render('editbuser', { 
-            title: 'Edit User',            
-			id: req.params.id, 
-			name: req.body.name,
-			age: req.body.age,
-			email: req.body.email
-        })
+        const user = rows[0];
+        res.render('admin/edit', { user });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
     }
-})
+});
+
+router.post('/admin/users/:id', async (req, res) => {
+    try {
+        const userId = req.params.id;
+        const { fname, email, balance, account, country } = req.body;
+
+        const query = 'UPDATE users SET fname = $1, email = $2, balance = $3, account = $4, country = $5 WHERE id = $6';
+        await pool.query(query, [fname, email, balance, account, country, userId]);
+
+        res.redirect('/admin/users');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
 router.post('/personal',(req,res)=>{
     req.assert('first', 'First Name is required').notEmpty()           //Validate name
     req.assert('last', 'Last Name is required').notEmpty()           //Validate name
