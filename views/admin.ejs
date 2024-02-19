@@ -46,6 +46,14 @@
             font-size: 24px;
             color: #333333; /* Default color */
         }
+
+        .edit-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #007bff; /* Blue color for edit button */
+        }
     </style>
 </head>
 <body class="<%= mode %>">
@@ -71,6 +79,7 @@
                     <p>Account Type: <%= obj.account %></p>
                     <p>Country: <%= obj.country %></p>
                     <!-- Add more user details here -->
+                    <button class="edit-btn">Edit</button>
                 </div>
             <% }); %>
         </div>
