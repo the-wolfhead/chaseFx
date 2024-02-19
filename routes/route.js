@@ -264,7 +264,8 @@ router.get('/deleteuser/(:id)', function(req, res, next){
         if (err) throw err;
         res.redirect('/admin');
     })
-})router.get('/admin/edit/:id', async (req, res) => {
+});
+router.get('/admin/edit/:id', async (req, res) => {
     try {
         const userId = req.params.id;
         const query = 'SELECT * FROM users WHERE id = $1';
@@ -275,7 +276,7 @@ router.get('/deleteuser/(:id)', function(req, res, next){
         }
 
         const user = rows[0];
-        res.render('admin/edit', { user });
+        res.render('edit', { user });
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
@@ -290,7 +291,7 @@ router.post('/admin/users/:id', async (req, res) => {
         const query = 'UPDATE users SET fname = $1, email = $2, balance = $3, account = $4, country = $5 WHERE id = $6';
         await pool.query(query, [fname, email, balance, account, country, userId]);
 
-        res.redirect('/admin/users');
+        res.redirect('/admin');
     } catch (error) {
         console.error(error);
         res.status(500).send('Internal Server Error');
