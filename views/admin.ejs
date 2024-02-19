@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Include Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Common styles */
-        body {
-            font-family: Arial, sans-serif;
-            transition: background-color 0.5s ease;
+        /* Light mode */
+        .light-mode {
+            background-color: #ffffff;
+            color: #333333; /* Adjust text color for light mode */
         }
 
-        h1 {
-            color: #333;
+        /* Dark mode */
+        .dark-mode {
+            background-color: #333333;
+            color: #ffffff; /* Adjust text color for dark mode */
+        }
+
+        .container {
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 20px;
         }
 
         .user-card {
@@ -22,8 +30,6 @@
             border-radius: 5px;
             padding: 10px;
             margin-bottom: 10px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .user-profile-pic {
@@ -33,66 +39,50 @@
             object-fit: cover;
         }
 
-        /* Light mode */
-        body.light-mode {
-            background-color: #f5f5f5;
-        }
-
-        /* Dark mode */
-        body.dark-mode {
-            background-color: #333;
-            color: #fff;
-        }
-
-        .user-card.dark-mode {
-            background-color: #444;
-            border-color: #555;
-            color: #fff;
-        }
-
-        /* Toggle button styles */
         .toggle-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: transparent;
+            background: none;
             border: none;
             cursor: pointer;
-            z-index: 999;
-        }
-
-        .toggle-btn i {
             font-size: 24px;
+            color: #333333; /* Default color */
         }
     </style>
 </head>
 <body class="<%= mode %>">
-    <h1>Admin Panel</h1>
-    <button class="toggle-btn" onclick="toggleMode()">
-        <i class="fas fa-sun"></i>
-        <i class="fas fa-moon"></i>
-    </button>
-    <a href="/admin/users">Manage Users</a>
-    <h1>Users</h1>
-    <div class="user-list">
-        <% obj.forEach(function(obj) { %>
-            <div class="user-card">
-                <p><strong>Name:</strong> <%= obj.fname %></p>
-                <p><strong>Email:</strong> <%= obj.email %></p>
-                <p><strong>Balance:</strong> <%= obj.balance %></p>
-                <p><strong>Account Type:</strong> <%= obj.account %></p>
-                <p><strong>Country:</strong> <%= obj.country %></p>
-            </div>
-        <% }); %>
+    <div class="container">
+        <h1>Admin Panel</h1>
+        <!-- Toggle button for light/dark mode -->
+        <button class="toggle-btn" onclick="toggleMode()">
+            <% if (mode === 'light-mode') { %>
+                <i class="fas fa-moon"></i> <!-- Moon icon for dark mode -->
+            <% } else { %>
+                <i class="fas fa-sun"></i> <!-- Sun icon for light mode -->
+            <% } %>
+        </button>
+        <a href="/admin/users">Manage Users</a>
+        <h2>Users</h2>
+        <div class="user-list">
+            <% obj.forEach(function(obj) { %>
+                <div class="user-card">
+                    <img src="img/content/download (1).png" alt="Profile Picture" class="user-profile-pic">
+                    <p>Name: <%= obj.fname %></p>
+                    <p>Email: <%= obj.email %></p>
+                    <p>Balance: <%= obj.balance %></p>
+                    <p>Account Type: <%= obj.account %></p>
+                    <p>Country: <%= obj.country %></p>
+                    <!-- Add more user details here -->
+                </div>
+            <% }); %>
+        </div>
     </div>
 
-    <!-- JavaScript to toggle mode -->
+    <!-- Script for toggling light/dark mode -->
     <script>
         function toggleMode() {
-            document.body.classList.toggle('light-mode');
-            document.body.classList.toggle('dark-mode');
+            const body = document.body;
+            body.classList.toggle('light-mode');
+            body.classList.toggle('dark-mode');
         }
     </script>
 </body>
 </html>
-
