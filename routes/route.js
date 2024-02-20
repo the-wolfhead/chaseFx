@@ -387,6 +387,17 @@ router.post('/signup', async (req, res) => {
 
       const query = 'INSERT INTO users (fname, account, country, phone, email, password, balance,  verification) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id';
       const result = await connection.query(query, [fname, account, country, phone, email, password, balance, verification]);
+
+       // Send verification email
+       const emailTemplate = fs.readFileSync('emailTemplate.ejs', 'utf8');
+       const renderedTemplate = ejs.render(emailTemplate, { name: fname, verificationCode: generateVerificationCode() });
+ 
+       await transporter.sendMail({
+         from: 'support@chasefxonline.com',
+         to: email,
+         subject: 'Please verify your email address',
+         html: renderedTemplate
+       });
       
       req.flash('success', 'You have successfully signed up!');
       user_id = result.rows[0].id;
@@ -410,6 +421,11 @@ router.post('/signup', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
+// Function to generate a verification code (you can customize this as per your requirement)
+function generateVerificationCode() {
+    // Generate a random 6-digit code
+    return Math.floor(100000 + Math.random() * 900000);
 
 //logout
 router.get('/logout',(req,res)=>{
