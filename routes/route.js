@@ -14,8 +14,7 @@ var aws = require('aws-sdk');
 const { Client } = require("appwrite"); // Ensure the correct path to the appwrite library
 const { Storage } = require("appwrite"); // Ensure the correct path to the appwrite library
 var path = require('path');
-var s3 = new aws.S3();
-
+const fs = require('fs');
 
 // Initialize Appwrite client
 const client = new Client();

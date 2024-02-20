@@ -26,6 +26,7 @@
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.2",
     "express-validator": "^5.3.0",
+    "fs": "^0.0.1-security",
     "get": "^1.4.0",
     "jquery-ui": "^1.13.1",
     "jsonwebtoken": "^9.0.2",
