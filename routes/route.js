@@ -426,7 +426,7 @@ router.post('/signup', async (req, res) => {
 function generateVerificationCode() {
     // Generate a random 6-digit code
     return Math.floor(100000 + Math.random() * 900000);
-
+}
 //logout
 router.get('/logout',(req,res)=>{
     res.redirect('/')
