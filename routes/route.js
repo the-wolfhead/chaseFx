@@ -388,7 +388,7 @@ router.post('/signup', async (req, res) => {
       const result = await connection.query(query, [fname, account, country, phone, email, password, balance, verification]);
 
        // Send verification email
-       const emailTemplate = fs.readFileSync('emailTemplate', 'utf8');
+       //const emailTemplate = fs.readFileSync('emailTemplate', 'utf8');
        const renderedTemplate = ejs.render('emailTemplate', { name: fname, verificationCode: generateVerificationCode() });
  
        await transporter.sendMail({
