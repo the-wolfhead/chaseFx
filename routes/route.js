@@ -389,12 +389,9 @@ router.post('/signup', async (req, res) => {
       const result = await connection.query(query, [fname, account, country, phone, email, password, balance, verification]);
 
        // Send verification email
-       //const emailTemplate = fs.readFileSync('emailTemplate', 'utf8');
-<<<<<<< HEAD
-       const renderedTemplate = ejs.render('emailTemplate', { name: fname, verificationCode: generateVerificationCode() });
-=======
-      /* const renderedTemplate = ejs.render('emailTemplate', { name: fname, verificationCode: generateVerificationCode() });
->>>>>>> 1d4e9daa1a7993fbaf9123588c0dc89f35fd7dec
+       //const emailTemplate = fs.readFileSync('emailTemplate'
+      // const renderedTemplate = ejs.render('emailTemplate', { name: fname, verificationCode: generateVerificationCode() 
+      /* const renderedTemplate = ejs.render('emailTemplate', { name: fname, verificationCode: generateVerificationCode() });1d4e9daa1a7993fbaf9123588c0dc89f35fd7dec
  
        await transporter.sendMail({
          from: 'support@chasefxonline.com',
