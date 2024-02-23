@@ -390,14 +390,18 @@ router.post('/signup', async (req, res) => {
 
        // Send verification email
        //const emailTemplate = fs.readFileSync('emailTemplate', 'utf8');
+<<<<<<< HEAD
        const renderedTemplate = ejs.render('emailTemplate', { name: fname, verificationCode: generateVerificationCode() });
+=======
+      /* const renderedTemplate = ejs.render('emailTemplate', { name: fname, verificationCode: generateVerificationCode() });
+>>>>>>> 1d4e9daa1a7993fbaf9123588c0dc89f35fd7dec
  
        await transporter.sendMail({
          from: 'support@chasefxonline.com',
          to: email,
          subject: 'Please verify your email address',
          html: renderedTemplate
-       });
+       });*/
       
       req.flash('success', 'You have successfully signed up!');
       user_id = result.rows[0].id;
