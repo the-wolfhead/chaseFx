@@ -49,7 +49,7 @@ router.get('/support',(req,res)=>{
     res.render('support')
     })
 router.get('/services',(req,res)=>{
-    res.render('services')
+    res.render('/services')
     })
 router.get('/about',(req,res)=>{
     res.render('about');
