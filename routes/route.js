@@ -471,7 +471,7 @@ router.get('/logout',(req,res)=>{
         connection.query('UPDATE users SET balance='+balance + ' WHERE id ='+user_id, balance, function(err, result) {
             if (err) throw err;});
     } 
- )
+ ) 
 
  const transporter = nodemailer.createTransport({
     host: "smtp.chasefxonline.com",  
