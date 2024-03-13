@@ -398,16 +398,17 @@ router.post('/signup', async (req, res) => {
          to: email,
          subject: 'Please verify your email address',
          html: renderedTemplate
-       });*/
+       });*/                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
       
       req.flash('success', 'You have successfully signed up!');
       user_id = result.rows[0].id;
       res.redirect('/login');
     } else {
       const error_msg = errors.map(error => error.msg).join('<br>');
+      console.log(error_msg);
       req.flash('error', error_msg);
       
-      res.render('signup', { 
+      res.render('register', { 
         title: 'Registration Page',
         first: req.body.first,
         last: req.body.last,
